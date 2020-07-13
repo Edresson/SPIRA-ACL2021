@@ -1,0 +1,46 @@
+{
+    "model_name":"spiraconv", // voicefilter and voicesplit
+    "dataset":{
+        "train_csv":"../train.csv",
+        "test_csv":"../test.csv",
+        "noise_csv":"../noise.csv"
+    },
+    "train_config": {
+        "epochs": 1000,
+        "learning_rate": 1e-2,
+        "optimizer":"adam",
+        "batch_size": 2,
+        "seed": 42,
+        "num_workers": 14,
+        "logs_path": "../checkpoints/voicesplit-continue-si-snr/",
+        "reinit_layers": null,
+        "summary_interval": 2,
+        "checkpoint_interval": 500
+    },
+    "test_config": {
+        "batch_size": 1,
+        "num_workers": 1
+    },
+    "audio": {
+        "feature": "spectogram", // spectogram or melspectogram or mfcc
+
+        // wave load paramers
+        "sample_rate": 16000,
+        "normalize": true, // if true, then output is divided by 1 << 31 (assumes signed 32-bit audio), and normalizes to [-1, 1]. If number, then output is divided by that number If callable, then the output is passed as a parameter to the given function, then the output is divided by the result. 
+
+        // mel spectorgram paramers
+        "num_mels": 40, // number of mels coefficients
+        "mel_fmin": 0.0, // minimum freq level for mel-spec. ~50 for male and ~95 for female voices. Tune for dataset!!
+        "mel_fmax": null, // maximum freq level for mel-spec. Tune for dataset!!  good value 8000.0
+
+        // mfcc paramers
+        "num_mfcc": 40, // Number of mfc coefficients to retain 
+        "log_mels": false, //  whether to use log-mel spectrograms instead of db-scaled.
+
+        // general config
+        "n_fft": 1200,
+        "num_freq": 601,// n_fft//2 + 1
+        "hop_length": 160,
+        "win_length": 400
+    }
+}
