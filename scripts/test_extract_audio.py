@@ -1,5 +1,8 @@
 
 import os
+import sys
+sys.path.append('.')
+sys.path.append('../')
 import random
 import argparse
 import json
@@ -7,6 +10,8 @@ import torch
 import torch.utils.data
 from utils.audio_processor import AudioProcessor 
 from utils.generic_utils import load_config
+
+
 if __name__ == "__main__":
     # Get defaults so it can work with no Sacred
     parser = argparse.ArgumentParser()
@@ -21,10 +26,13 @@ if __name__ == "__main__":
 
     # extract spectrogram
     config.audio['feature'] = 'spectrogram'
+    
     ap = AudioProcessor(**config.audio)
     spectrogram = ap.get_feature_from_audio_path(filepath)
     print("Spectogram with shape:",spectrogram.shape)
-
+    print(ap.load_wav(filepath)[:,:5].shape, ap.load_wav(filepath).max())
+    a = [ torch.zeros(1,100,50), torch.zeros(1,110,50)]
+    print(torch.cat(a, dim=1).shape, torch.cat(a, dim=1).reshape(2,-1,50).shape)
     # extract spectrogram
     config.audio['feature'] = 'melspectrogram'
     ap = AudioProcessor(**config.audio)

@@ -3,8 +3,7 @@ import json
 import random
 from random import getrandbits
 import re
-# set random seed
-random.seed(0)
+import torch.nn.functional as F
 
 class AttrDict(dict):
     def __init__(self, *args, **kwargs):
@@ -41,3 +40,63 @@ def copy_config_file(config_file, out_path, new_fields):
     config_out_file = open(out_path, "w")
     config_out_file.writelines(config_lines)
     config_out_file.close()
+
+# adapted from https://github.com/digantamisra98/Mish/blob/master/Mish/Torch/mish.py
+class Mish(nn.Module):
+    '''
+    Applies the mish function element-wise:
+    mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + exp(x)))
+    Shape:
+        - Input: (N, *) where * means, any number of additional
+          dimensions
+        - Output: (N, *), same shape as the input
+    Examples:
+        >>> m = Mish()
+        >>> input = torch.randn(2)
+        >>> output = m(input)
+    '''
+    def __init__(self):
+        '''
+        Init method.
+        '''
+        super().__init__()
+
+    def forward(self, inp):
+        '''
+        Forward pass of the function.
+        '''
+        return inp * torch.tanh(F.softplus(inp))
+
+def set_init_dict(model_dict, checkpoint, c):
+    """
+    This Function is adpted from: https://github.com/mozilla/TTS
+    Credits: Eren Gölge (@erogol)
+    """
+    # Partial initialization: if there is a mismatch with new and old layer, it is skipped.
+    for k, v in checkpoint['model'].items():
+        if k not in model_dict:
+            print(" | > Layer missing in the model definition: {}".format(k))
+    # 1. filter out unnecessary keys
+    pretrained_dict = {
+        k: v
+        for k, v in checkpoint['model'].items() if k in model_dict
+    }
+    # 2. filter out different size layers
+    pretrained_dict = {
+        k: v
+        for k, v in pretrained_dict.items()
+        if v.numel() == model_dict[k].numel()
+    }
+    # 3. skip reinit layers
+    if c.train_config.reinit_layers is not None:
+        for reinit_layer_name in c.train_config.reinit_layers:
+            pretrained_dict = {
+                k: v
+                for k, v in pretrained_dict.items()
+                if reinit_layer_name not in k
+            }
+    # 4. overwrite entries in the existing state dict
+    model_dict.update(pretrained_dict)
+    print(" | > {} / {} layers are restored.".format(len(pretrained_dict),
+                                                     len(model_dict)))
+    return model_dict

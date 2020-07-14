@@ -25,7 +25,7 @@ class AudioProcessor(object):
         elif self.feature == 'melspectrogram':
             audio_class = torchaudio.transforms.MelSpectrogram(sample_rate=self.sample_rate, n_fft=self.n_fft, win_length=self.win_length, hop_length=self.hop_length, n_mels=self.num_mels, f_min=self.mel_fmin, f_max=self.mel_fmax)
         elif self.feature == 'mfcc':
-            audio_class = torchaudio.transforms.MFCC(sample_rate=self.sample_rate, n_mfcc=self.num_mfcc, n_fft=self.n_fft, win_length=self.win_length, hop_length=self.hop_length, log_mels=self.log_mels, n_mels=self.num_mels)
+            audio_class = torchaudio.transforms.MFCC(sample_rate=self.sample_rate, n_mfcc=self.num_mfcc, log_mels=self.log_mels, melkwargs={'n_fft':self.n_fft, 'win_length':self.win_length, 'hop_length':self.hop_length, 'n_mels':self.num_mels})
 
         feature = audio_class(y)
         return feature

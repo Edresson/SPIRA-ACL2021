@@ -1,9 +1,12 @@
 {
     "model_name":"spiraconv", // voicefilter and voicesplit
+    "seed":42,
     "dataset":{
-        "train_csv":"../train.csv",
-        "test_csv":"../test.csv",
-        "noise_csv":"../noise.csv"
+        "train_csv":"../train.csv", // format path_wav, class
+        "test_csv":"../test.csv",// format path_wav, class
+        "noise_csv":"../noise.csv",// format path_wav
+        "control_class": 0,
+        "patient_class": 1
     },
     "train_config": {
         "epochs": 1000,
@@ -12,18 +15,24 @@
         "batch_size": 2,
         "seed": 42,
         "num_workers": 14,
-        "logs_path": "../checkpoints/voicesplit-continue-si-snr/",
+        "logs_path": "../checkpoints/spiraconv-test/",
         "reinit_layers": null,
         "summary_interval": 2,
         "checkpoint_interval": 500
     },
+    "data_aumentation":{
+        "insert_noise": true, // disable/enable noise insertion
+        "num_noise_control": 2, // number of diferents noise samples applied in control files 
+        "num_noise_patient": 1, // number of diferents noise samples applied in control files ! we recomend num_noise_control - 1
+        "noise_max_amp": 0.6,
+        "noise_min_amp": 0.4
+    },
     "test_config": {
         "batch_size": 1,
-        "num_workers": 1
+        "num_workers": 7
     },
     "audio": {
         "feature": "spectogram", // spectogram or melspectogram or mfcc
-
         // wave load paramers
         "sample_rate": 16000,
         "normalize": true, // if true, then output is divided by 1 << 31 (assumes signed 32-bit audio), and normalizes to [-1, 1]. If number, then output is divided by that number If callable, then the output is passed as a parameter to the given function, then the output is divided by the result. 
