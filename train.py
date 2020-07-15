@@ -83,7 +83,7 @@ def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, 
 
     model.train()
     for _ in range(c.train_config['epochs']):
-        validation(criterion, ap, model, testloader, tensorboard, step,  cuda=cuda)
+        #validation(criterion, ap, model, testloader, tensorboard, step,  cuda=cuda)
         for feature, target in trainloader:
                 if cuda:
                     feature = feature.cuda()
@@ -92,6 +92,8 @@ def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, 
                 output = model(feature)
 
                 # Calculate loss
+                #print(output.shape, target.shape)
+                target = target[:, :output.shape[1],:target.shape[2]]
                 loss = criterion(output, target)
                 optimizer.zero_grad()
                 loss.backward()
@@ -130,7 +132,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     c = load_config(args.config_path)
-    ap = AudioProcessor(c.audio)
+    ap = AudioProcessor(**c.audio)
 
     log_path = os.path.join(c.train_config['logs_path'], c.model_name)
     os.makedirs(log_path, exist_ok=True)

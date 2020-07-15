@@ -4,7 +4,7 @@ import random
 from random import getrandbits
 import re
 import torch.nn.functional as F
-
+import torch.nn as nn
 class AttrDict(dict):
     def __init__(self, *args, **kwargs):
         super(AttrDict, self).__init__(*args, **kwargs)

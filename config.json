@@ -2,19 +2,28 @@
     "model_name":"spiraconv", // voicefilter and voicesplit
     "seed":42,
     "dataset":{
-        "train_csv":"../train.csv", // format path_wav, class
-        "test_csv":"../test.csv",// format path_wav, class
-        "noise_csv":"../noise.csv",// format path_wav
+        "train_csv":"../dados-exemplo/data.csv", // format path_wav, class
+        "train_data_root_path": "../dados-exemplo/", // complementary path for csv
+        "test_csv":"../dados-exemplo/data.csv", // format path_wav, class
+        "test_data_root_path": "../dados-exemplo/", // complementary path for csv
+        "noise_csv":"../dados-exemplo/noise_data.csv",// format path_wav
+        "noise_data_root_path":"../dados-exemplo/", // complementary path for csv
         "control_class": 0,
         "patient_class": 1
+    },
+    "model":{
+        "fc1_dim":100,
+        "fc2_dim":1
+
+
     },
     "train_config": {
         "epochs": 1000,
         "learning_rate": 1e-2,
         "optimizer":"adam",
-        "batch_size": 2,
+        "batch_size": 1,
         "seed": 42,
-        "num_workers": 14,
+        "num_workers": 1,
         "logs_path": "../checkpoints/spiraconv-test/",
         "reinit_layers": null,
         "summary_interval": 2,
@@ -22,17 +31,17 @@
     },
     "data_aumentation":{
         "insert_noise": true, // disable/enable noise insertion
-        "num_noise_control": 2, // number of diferents noise samples applied in control files 
+        "num_noise_control": 4, // number of diferents noise samples applied in control files 
         "num_noise_patient": 1, // number of diferents noise samples applied in control files ! we recomend num_noise_control - 1
-        "noise_max_amp": 0.6,
-        "noise_min_amp": 0.4
+        "noise_max_amp": 0.2,
+        "noise_min_amp": 0.1
     },
     "test_config": {
         "batch_size": 1,
-        "num_workers": 7
+        "num_workers": 1
     },
     "audio": {
-        "feature": "spectogram", // spectogram or melspectogram or mfcc
+        "feature": "mfcc", // spectrogram or melspectrogram or mfcc
         // wave load paramers
         "sample_rate": 16000,
         "normalize": true, // if true, then output is divided by 1 << 31 (assumes signed 32-bit audio), and normalizes to [-1, 1]. If number, then output is divided by that number If callable, then the output is passed as a parameter to the given function, then the output is divided by the result. 
