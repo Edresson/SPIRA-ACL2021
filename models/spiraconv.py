@@ -43,21 +43,21 @@ class SpiraConv(nn.Module):
     def forward(self, x):
         # x: [B, T, num_feature]
         x = x.unsqueeze(1)
-        print(x.shape)
+        #print(x.shape)
         # x: [B, 1, T, num_feature]
         x = self.conv(x)
-        print(x.shape)
+        #print(x.shape)
         # x: [B, 4, T, num_feature]
         x = x.transpose(1, 2).contiguous()
         # x: [B, T, 4, num_feature]
-        print(x.shape)
+        #print(x.shape)
         x = x.view(x.size(0), x.size(1), -1)
         # x: [B, T, 4*num_feature]
-        print(x.shape)
+        #print(x.shape)
         x = self.fc1(x) # x: [B, T, fc2_dim]
-        print(x.shape)
+        #print(x.shape)
         x = self.mish(x)
         x = self.fc2(x)
         x = torch.sigmoid(x)
-        print(x.shape)
+        #print(x.shape)
         return x

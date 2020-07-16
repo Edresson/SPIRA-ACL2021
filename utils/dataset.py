@@ -26,7 +26,6 @@ class Dataset(Dataset):
         
         # read csvs
         self.dataset_list = pd.read_csv(self.dataset_csv, sep=',').values
-        print(self.dataset_list[0][1],self.dataset_list[-1][1])
         self.noise_list = pd.read_csv(self.noise_csv, sep=',').values
         # noise config
         self.num_noise_files = len(self.noise_list)-1
@@ -41,10 +40,9 @@ class Dataset(Dataset):
         if self.c.data_aumentation['insert_noise']:
             if self.control_class == class_name: # if sample is a control sample
                 #print('antes',wav.shape)
-                #torchaudio.save('antes_control.wav', wav, self.ap.sample_rate)
+                # torchaudio.save('antes_control.wav', wav, self.ap.sample_rate)
                 for _ in range(self.c.data_aumentation['num_noise_control']):
                     # choise random noise file
-                    #print(self.noise_list[int(random.randint(0, self.num_noise_files))])
                     noise_wav = self.ap.load_wav(os.path.join(self.noise_root, self.noise_list[random.randint(0, self.num_noise_files)][0]))
                     noise_wav_len = noise_wav.shape[1]
                     wav_len = wav.shape[1]
@@ -56,13 +54,12 @@ class Dataset(Dataset):
                     reduct_factor = max_amp/float(noise_wav.max().numpy())
                     noise_wav = noise_wav*reduct_factor
                     wav = wav + noise_wav
-                #print('depois',wav.shape)
                 #torchaudio.save('depois_controle.wav', wav, self.ap.sample_rate)
-                #exit()
+                
             elif self.patient_class == class_name: # if sample is a patient sample
                 for _ in range(self.c.data_aumentation['num_noise_patient']):
-                    #print('antes',wav.shape)
-                    #torchaudio.save('antes_patiente.wav', wav, self.ap.sample_rate)
+                    
+                    # torchaudio.save('antes_patiente.wav', wav, self.ap.sample_rate)
                     # choise random noise file
                     noise_wav = self.ap.load_wav(os.path.join(self.noise_root, self.noise_list[random.randint(0, self.num_noise_files)][0]))
                     noise_wav_len = noise_wav.shape[1]
@@ -75,8 +72,8 @@ class Dataset(Dataset):
                     reduct_factor = max_amp/float(noise_wav.max().numpy())
                     noise_wav = noise_wav*reduct_factor
                     wav = wav + noise_wav
+                
                 #torchaudio.save('depois_patient.wav', wav, self.ap.sample_rate)
-                #print('depois',wav.shape)
                 
         # feature shape (Batch_size, n_features, timestamp)
         feature = self.ap.get_feature_from_audio(wav)

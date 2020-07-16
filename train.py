@@ -31,6 +31,7 @@ def validation(criterion, ap, model, testloader, tensorboard, step,  cuda):
 
         output = model(feature)
         # Calculate loss
+        target = target[:, :output.shape[1],:target.shape[2]]
         loss = criterion(output, target).item()
         losses.append(loss)
     mean_loss = np.array(losses).mean()
@@ -83,7 +84,7 @@ def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, 
 
     model.train()
     for _ in range(c.train_config['epochs']):
-        #validation(criterion, ap, model, testloader, tensorboard, step,  cuda=cuda)
+        validation(criterion, ap, model, testloader, tensorboard, step,  cuda=cuda)
         for feature, target in trainloader:
                 if cuda:
                     feature = feature.cuda()
@@ -93,6 +94,7 @@ def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, 
 
                 # Calculate loss
                 #print(output.shape, target.shape)
+                #adjust target dim
                 target = target[:, :output.shape[1],:target.shape[2]]
                 loss = criterion(output, target)
                 optimizer.zero_grad()
@@ -108,7 +110,7 @@ def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, 
                 # write loss to tensorboard
                 if step % c.train_config['summary_interval'] == 0:
                     tensorboard.log_training(loss, step)
-                    print("Write summary at step %d" % step)
+                    print("Write summary at step %d" % step, ' loss: ', loss)
 
                 # save checkpoint file  and evaluate and save sample to tensorboard
                 if step % c.train_config['checkpoint_interval'] == 0:

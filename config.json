@@ -32,9 +32,10 @@
     "data_aumentation":{
         "insert_noise": true, // disable/enable noise insertion
         "num_noise_control": 4, // number of diferents noise samples applied in control files 
-        "num_noise_patient": 1, // number of diferents noise samples applied in control files ! we recomend num_noise_control - 1
-        "noise_max_amp": 0.2,
-        "noise_min_amp": 0.1
+        "num_noise_patient": 3, // number of diferents noise samples applied in control files ! we recomend num_noise_control - 1
+        // You need set this values, its the maximum and minimum values for noise patients intervals.  You need to cut out the noise in several patient files and calculate the maximum maximum amplitude and the minimum maximum amplitude. An example script to get these values is available at: get_max_amp_using_noise_samples.py
+        "noise_max_amp": 0.19233719,
+        "noise_min_amp": 0.033474047
     },
     "test_config": {
         "batch_size": 1,
