@@ -9,8 +9,12 @@ import numpy as np
 
 import argparse
 
-from utils.generic_utils import load_config
+from utils.generic_utils import load_config, save_config_file
 from utils.generic_utils import set_init_dict
+
+from utils.generic_utils import NoamLR
+
+from utils.generic_utils import save_best_checkpoint
 
 from utils.tensorboard import TensorboardWriter
 
@@ -19,8 +23,8 @@ from utils.dataset import train_dataloader, eval_dataloader
 from models.spiraconv import SpiraConv
 from utils.audio_processor import AudioProcessor 
 
-
-def validation(criterion, ap, model, testloader, tensorboard, step,  cuda):
+def validation(criterion, ap, model, c, testloader, tensorboard, step,  cuda):
+    padding_with_max_lenght = c.dataset['padding_with_max_lenght']
     model.eval()
     losses = []
     for feature, target in testloader:
@@ -31,14 +35,18 @@ def validation(criterion, ap, model, testloader, tensorboard, step,  cuda):
 
         output = model(feature)
         # Calculate loss
-        target = target[:, :output.shape[1],:target.shape[2]]
+        if not padding_with_max_lenght:
+            target = target[:, :output.shape[1],:target.shape[2]]
         loss = criterion(output, target).item()
         losses.append(loss)
     mean_loss = np.array(losses).mean()
     tensorboard.log_evaluation(mean_loss, step)
+    print("Validation Loss:", mean_loss)
     model.train()
+    return mean_loss
 
 def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, c, model_name, ap, cuda=True):
+    padding_with_max_lenght = c.dataset['padding_with_max_lenght']
     if(model_name == 'spiraconv'):
         model = SpiraConv(c)
     #elif(model_name == 'voicesplit'):
@@ -75,6 +83,15 @@ def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, 
         step = checkpoint['step']
     else:
         print("Starting new training run")
+        step = 0
+
+
+    if c.train_config['lr_decay']:
+        scheduler = NoamLR(optimizer,
+                           warmup_steps=c.train_config['warmup_steps'],
+                           last_epoch=step - 1)
+    else:
+        scheduler = None
     # convert model from cuda
     if cuda:
         model = model.cuda()
@@ -82,9 +99,10 @@ def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, 
     # define loss function
     criterion = nn.BCELoss()
 
+    best_loss = float('inf')
+
     model.train()
-    for _ in range(c.train_config['epochs']):
-        validation(criterion, ap, model, testloader, tensorboard, step,  cuda=cuda)
+    for epoch in range(c.train_config['epochs']):
         for feature, target in trainloader:
                 if cuda:
                     feature = feature.cuda()
@@ -93,13 +111,16 @@ def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, 
                 output = model(feature)
 
                 # Calculate loss
-                #print(output.shape, target.shape)
-                #adjust target dim
-                target = target[:, :output.shape[1],:target.shape[2]]
+                # adjust target dim
+                if not padding_with_max_lenght:
+                    target = target[:, :output.shape[1],:target.shape[2]]
                 loss = criterion(output, target)
                 optimizer.zero_grad()
                 loss.backward()
                 optimizer.step()
+                # update lr decay scheme
+                if scheduler:
+                    scheduler.step()
                 step += 1
 
                 loss = loss.item()
@@ -122,8 +143,14 @@ def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, 
                         'config_str': str(c),
                     }, save_path)
                     print("Saved checkpoint to: %s" % save_path)
-                    validation(criterion, ap, model, testloader, tensorboard, step,  cuda=cuda)
-
+                    # run validation and save best checkpoint
+                    val_loss = validation(criterion, ap, model, c, testloader, tensorboard, step,  cuda=cuda)
+                    best_loss = save_best_checkpoint(log_dir, model, optimizer, c, step, val_loss, best_loss)
+        
+        print("Epoch %d End !"%epoch)
+        # run validation and save best checkpoint at end epoch
+        val_loss = validation(criterion, ap, model, c, testloader, tensorboard, step,  cuda=cuda)
+        best_loss = save_best_checkpoint(log_dir, model, optimizer, c, step, val_loss, best_loss)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -142,6 +169,12 @@ if __name__ == '__main__':
     tensorboard = TensorboardWriter(os.path.join(log_path,'tensorboard'))
 
     train_dataloader = train_dataloader(c, ap)
-    eval_dataloader = eval_dataloader(c, ap)
+    max_seq_len = train_dataloader.dataset.get_max_seq_lenght()
+    c.dataset['max_seq_len'] = max_seq_len
+
+    # save config in train dir, its necessary for test before train and reproducity
+    save_config_file(c, os.path.join(log_path,'config.json'))
+
+    eval_dataloader = eval_dataloader(c, ap, max_seq_len=max_seq_len)
 
     train(args, log_path, args.checkpoint_path, train_dataloader, eval_dataloader, tensorboard, c, c.model_name, ap, cuda=True)

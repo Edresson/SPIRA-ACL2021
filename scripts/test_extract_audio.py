@@ -30,9 +30,7 @@ if __name__ == "__main__":
     ap = AudioProcessor(**config.audio)
     spectrogram = ap.get_feature_from_audio_path(filepath)
     print("Spectogram with shape:",spectrogram.shape)
-    print(ap.load_wav(filepath)[:,:5].shape, ap.load_wav(filepath).max())
-    a = [ torch.zeros(1,100,50), torch.zeros(1,110,50)]
-    print(torch.cat(a, dim=1).shape, torch.cat(a, dim=1).reshape(2,-1,50).shape)
+
     # extract spectrogram
     config.audio['feature'] = 'melspectrogram'
     ap = AudioProcessor(**config.audio)

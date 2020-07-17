@@ -5,13 +5,14 @@ from torch import stack
 import numpy as np
 import pandas as pd
 import random
+import torch.nn.functional as F
 from torch.nn.utils.rnn import pad_sequence
 import torchaudio
 class Dataset(Dataset):
     """
     Class for load a train and test from dataset generate by import_librispeech.py and others
     """
-    def __init__(self, c, ap, train=True):
+    def __init__(self, c, ap, train=True, max_seq_len=None):
         # set random seed
         random.seed(c['seed'])
         self.c = c
@@ -31,6 +32,25 @@ class Dataset(Dataset):
         self.num_noise_files = len(self.noise_list)-1
         self.control_class = c.dataset['control_class']
         self.patient_class = c.dataset['patient_class']
+
+        # get max seq lenght for padding 
+        if self.c.dataset['padding_with_max_lenght'] and train and not self.c.dataset['max_seq_len']:
+            self.max_seq_len = 0
+            for idx in range(len(self.dataset_list)):
+                wav = self.ap.load_wav(os.path.join(self.dataset_root, self.dataset_list[idx][0]))
+                # calculate time step dim using hop lenght
+                seq_len = int((wav.shape[1]/c.audio['hop_length'])+1)
+                if seq_len > self.max_seq_len:
+                    self.max_seq_len = seq_len
+            print("The Max Time dim Lenght is: ", self.max_seq_len)
+        else: # for eval set max_seq_len in train mode
+            if self.c.dataset['max_seq_len']:
+                self.max_seq_len = self.c.dataset['max_seq_len']
+            else:
+                self.max_seq_len = max_seq_len
+
+    def get_max_seq_lenght(self):
+        return self.max_seq_len
 
     def __getitem__(self, idx):
         wav = self.ap.load_wav(os.path.join(self.dataset_root, self.dataset_list[idx][0]))
@@ -81,8 +101,15 @@ class Dataset(Dataset):
         feature = feature.transpose(1,2)
         # remove batch dim = (timestamp, n_features)
         feature = feature.reshape(feature.shape[1:])
-        # generate tensor with zeros for each timestep
-        target = torch.zeros(feature.shape[0],1)+class_name
+        if not self.c.dataset['padding_with_max_lenght']:
+            # generate tensor with zeros for each timestep
+            target = torch.zeros(feature.shape[0],1)+class_name
+        else:
+            # padding for max sequence 
+            zeros = torch.zeros(self.max_seq_len - feature.size(0),feature.size(1))
+            # append zeros before features
+            feature = torch.cat([feature, zeros], 0)
+            target = torch.FloatTensor([class_name])
         return feature, target
 
     def __len__(self):
@@ -98,8 +125,8 @@ def train_dataloader(c, ap):
                           drop_last=True,
                           sampler=None)
 
-def eval_dataloader(c, ap):
-    return DataLoader(dataset=Dataset(c, ap, train=False),
+def eval_dataloader(c, ap, max_seq_len=None):
+    return DataLoader(dataset=Dataset(c, ap, train=False, max_seq_len=max_seq_len),
                           collate_fn=own_collate_fn, batch_size=c.test_config['batch_size'], 
                           shuffle=False, num_workers=c.test_config['num_workers'])
 
@@ -108,6 +135,7 @@ def own_collate_fn(batch):
     targets = []
     for feature, target in batch:
         features.append(feature)
+        #print(target.shape)
         targets.append(target)
     # padding with zeros timestamp dim
     features = pad_sequence(features, batch_first=True, padding_value=0)

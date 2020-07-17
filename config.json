@@ -2,6 +2,8 @@
     "model_name":"spiraconv", // voicefilter and voicesplit
     "seed":42,
     "dataset":{
+        "padding_with_max_lenght": true,// if true, the timestep axis will be padded with the longest sequence, else, the timestep will be dynamic and the network will predict a vector of the size of the timestep on the output (if you use convulsions it can decrease)
+        "max_seq_len": null, // the data loader set automatically this value and save in train_config['logs_path']/config.json. its is max time dimension value in your train dataset. For convert this value to seconds use: value*hop_length/sample_rate
         "train_csv":"../dados-exemplo/data.csv", // format path_wav, class
         "train_data_root_path": "../dados-exemplo/", // complementary path for csv
         "test_csv":"../dados-exemplo/data.csv", // format path_wav, class
@@ -14,16 +16,16 @@
     "model":{
         "fc1_dim":100,
         "fc2_dim":1
-
-
     },
     "train_config": {
+        "lr_decay": true, // activate/desactivate Noam Learning Rate Decay Scheme    
+        "warmup_steps": 1000, //default 4000, Noam decay steps to increase the learning rate from 0 to "lr"
         "epochs": 1000,
-        "learning_rate": 1e-2,
+        "learning_rate": 1e-3, // Initial learning rate. If Noam decay is active, maximum learning rate.
         "optimizer":"adam",
-        "batch_size": 1,
+        "batch_size": 5,
         "seed": 42,
-        "num_workers": 1,
+        "num_workers": 14,
         "logs_path": "../checkpoints/spiraconv-test/",
         "reinit_layers": null,
         "summary_interval": 2,
@@ -38,8 +40,8 @@
         "noise_min_amp": 0.033474047
     },
     "test_config": {
-        "batch_size": 1,
-        "num_workers": 1
+        "batch_size": 2,
+        "num_workers": 10
     },
     "audio": {
         "feature": "mfcc", // spectrogram or melspectrogram or mfcc

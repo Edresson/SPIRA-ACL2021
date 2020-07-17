@@ -11,14 +11,18 @@ class SpiraConv(nn.Module):
         super(SpiraConv, self).__init__()
         self.config = config
         self.audio = self.config['audio']
-
+        self.padding_with_max_lenght = self.config.dataset['padding_with_max_lenght']
+        self.max_seq_len = self.config.dataset['max_seq_len']
+        print("Model Inicialized With Feature %s "%self.config.audio['feature'])
         if self.config.audio['feature'] == 'spectrogram':
-            self.num_feature == self.config.audio['num_freq']
+            self.num_feature = self.config.audio['num_freq']
         elif self.config.audio['feature'] == 'melspectrogram':
             self.num_feature = self.config.audio['num_mels']
         elif self.config.audio['feature'] == 'mfcc':
             self.num_feature = self.config.audio['num_mfcc']
-
+        else:
+            self.num_feature = None
+            raise ValueError('Feature %s Dont is supported'%self.config.audio['feature'])
         convs = [
             # cnn1
             nn.Conv2d(1, 32, kernel_size=(7,1), dilation=(2, 1)),
@@ -35,8 +39,22 @@ class SpiraConv(nn.Module):
             nn.BatchNorm2d(4), Mish()]
 
         self.conv = nn.Sequential(*convs)
-        # ToDo: Fix input dim
-        self.fc1 = nn.Linear(4*self.num_feature, self.config.model['fc1_dim'])
+
+        if self.padding_with_max_lenght:
+            # its very useful because if you change the convlutional arquiture the model calculate its, and you dont need change this :)
+            # I prefer aactivate the network in toy example because is more easy than calculate the conv output
+            # get zeros input
+            inp = torch.zeros(1, 1, self.max_seq_len, self.num_feature)
+            # get out shape
+            toy_activation_shape = self.conv(inp).shape
+            # set fully connected input dim 
+            fc1_input_dim = toy_activation_shape[1]*toy_activation_shape[2]*toy_activation_shape[3]
+            self.fc1 = nn.Linear(fc1_input_dim, self.config.model['fc1_dim'])
+        else:
+            # dinamic calculation num_feature, its useful if you use maxpooling or other pooling in feature dim, and this model dont break
+            inp = torch.zeros(1, 1, 500 ,self.num_feature)
+            # get out shape 
+            self.fc1 = nn.Linear(4*self.conv(inp).shape[-1], self.config.model['fc1_dim'])
         self.mish = Mish()
         self.fc2 = nn.Linear(self.config.model['fc1_dim'], self.config.model['fc2_dim'])
 
@@ -47,12 +65,18 @@ class SpiraConv(nn.Module):
         # x: [B, 1, T, num_feature]
         x = self.conv(x)
         #print(x.shape)
-        # x: [B, 4, T, num_feature]
+        # x: [B, n_filters, T, num_feature]
         x = x.transpose(1, 2).contiguous()
-        # x: [B, T, 4, num_feature]
+        # x: [B, T, n_filters, num_feature]
         #print(x.shape)
-        x = x.view(x.size(0), x.size(1), -1)
-        # x: [B, T, 4*num_feature]
+        if self.padding_with_max_lenght:
+             # x: [B, T*n_filters*num_feature]
+            x = x.view(x.size(0), -1)
+        else:
+             # x: [B, T, n_filters*num_feature]
+            x = x.view(x.size(0), x.size(1), -1)
+    
+       
         #print(x.shape)
         x = self.fc1(x) # x: [B, T, fc2_dim]
         #print(x.shape)
