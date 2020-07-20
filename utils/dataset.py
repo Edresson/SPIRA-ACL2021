@@ -18,8 +18,8 @@ class Dataset(Dataset):
         self.c = c
         self.ap = ap
         self.train = train
-        self.dataset_csv = c.dataset['train_csv'] if train else c.dataset['test_csv']
-        self.dataset_root = c.dataset['train_data_root_path'] if train else c.dataset['test_data_root_path']
+        self.dataset_csv = c.dataset['train_csv'] if train else c.dataset['eval_csv']
+        self.dataset_root = c.dataset['train_data_root_path'] if train else c.dataset['eval_data_root_path']
         self.noise_csv = c.dataset['noise_csv'] 
         self.noise_root = c.dataset['noise_data_root_path']
         assert os.path.isfile(self.dataset_csv),"Test or Train CSV file don't exists! Fix it in config.json"

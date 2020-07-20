@@ -27,7 +27,8 @@ def validation(criterion, ap, model, c, testloader, tensorboard, step,  cuda):
     padding_with_max_lenght = c.dataset['padding_with_max_lenght']
     model.eval()
     losses = []
-    for feature, target in testloader:
+    accs = []
+    for feature, target in testloader:       
         #try:
         if cuda:
             feature = feature.cuda()
@@ -39,9 +40,18 @@ def validation(criterion, ap, model, c, testloader, tensorboard, step,  cuda):
             target = target[:, :output.shape[1],:target.shape[2]]
         loss = criterion(output, target).item()
         losses.append(loss)
+        # calculate accuracy
+        target = target.reshape(-1)
+        _, predicted = torch.max(output.data, 1)
+        total_elements = target.nelement() 
+        correct = predicted.eq(target.data).sum().item()
+        acc = 100 * correct / total_elements
+        accs.append(acc)
+
     mean_loss = np.array(losses).mean()
-    tensorboard.log_evaluation(mean_loss, step)
-    print("Validation Loss:", mean_loss)
+    mean_acc = np.array(accs).mean()
+    tensorboard.log_evaluation(mean_loss, mean_acc, step)
+    print("Validation\n Loss:", mean_loss, "Acurracy: ", mean_acc)
     model.train()
     return mean_loss
 
