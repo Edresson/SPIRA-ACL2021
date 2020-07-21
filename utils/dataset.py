@@ -12,14 +12,20 @@ class Dataset(Dataset):
     """
     Class for load a train and test from dataset generate by import_librispeech.py and others
     """
-    def __init__(self, c, ap, train=True, max_seq_len=None):
+    def __init__(self, c, ap, train=True, max_seq_len=None, test=False):
         # set random seed
         random.seed(c['seed'])
+        torch.manual_seed(c['seed'])
+        torch.cuda.manual_seed(c['seed'])
+        np.random.seed(c['seed'])
         self.c = c
         self.ap = ap
         self.train = train
         self.dataset_csv = c.dataset['train_csv'] if train else c.dataset['eval_csv']
         self.dataset_root = c.dataset['train_data_root_path'] if train else c.dataset['eval_data_root_path']
+        if test:
+            self.dataset_csv = c.dataset['test_csv']
+            self.dataset_root = c.dataset['test_data_root_path']
         self.noise_csv = c.dataset['noise_csv'] 
         self.noise_root = c.dataset['noise_data_root_path']
         assert os.path.isfile(self.dataset_csv),"Test or Train CSV file don't exists! Fix it in config.json"
@@ -130,6 +136,12 @@ def eval_dataloader(c, ap, max_seq_len=None):
                           collate_fn=own_collate_fn, batch_size=c.test_config['batch_size'], 
                           shuffle=False, num_workers=c.test_config['num_workers'])
 
+
+def test_dataloader(c, ap, max_seq_len=None):
+    return DataLoader(dataset=Dataset(c, ap, train=False, test=True, max_seq_len=max_seq_len),
+                          collate_fn=own_collate_fn, batch_size=c.test_config['batch_size'], 
+                          shuffle=False, num_workers=c.test_config['num_workers'])
+
 def own_collate_fn(batch):
     features = []
     targets = []
@@ -145,4 +157,5 @@ def own_collate_fn(batch):
 
     # list to tensor
     #targets = stack(targets, dim=0)
+    #features = stack(features, dim=0)
     return features, targets

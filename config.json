@@ -1,5 +1,5 @@
 {
-    "model_name":"spiraconv", // voicefilter and voicesplit
+    "model_name":"spiraconv_v1", // spiraconv_v1 and spiraconv_v2
     "seed":42,
     "dataset":{
         "padding_with_max_lenght": true,// if true, the timestep axis will be padded with the longest sequence, else, the timestep will be dynamic and the network will predict a vector of the size of the timestep on the output (if you use convulsions it can decrease)
@@ -11,7 +11,7 @@
         "eval_csv":"../SPIRA_Dataset_V1/metadata_eval.csv", // format path_wav, class
         "eval_data_root_path": "../SPIRA_Dataset_V1/", // complementary path for csv
         // test dataset
-        "test_csv":"../SPIRA_Dataset_V1/metadata_eval.csv", // format path_wav, class
+        "test_csv":"../SPIRA_Dataset_V1/metadata_test.csv", // format path_wav, class
         "test_data_root_path": "../SPIRA_Dataset_V1/", // complementary path for csv
         // noise dataset for data aumentation
         "noise_csv":"../Ruidos-Hospitalares/noise_data.csv",// format path_wav
@@ -30,10 +30,10 @@
         "epochs": 1000,
         "learning_rate": 1e-3, // Initial learning rate. If Noam decay is active, maximum learning rate.
         "optimizer":"adam",
-        "batch_size": 5,
+        "batch_size": 70,
         "seed": 42,
         "num_workers": 14,
-        "logs_path": "../checkpoints/spiraconv-trained-with-SPIRA_Dataset_V1/",
+        "logs_path": "../checkpoints/spiraconv-trained-with-SPIRA_Dataset_V1_MEL_SPEC/",
         "reinit_layers": null,
         "summary_interval": 10,
         "checkpoint_interval": 500
@@ -47,11 +47,11 @@
         "noise_min_amp": 0.033474047
     },
     "test_config": {
-        "batch_size": 2,
-        "num_workers": 10
+        "batch_size": 10, // used on evaluation and test
+        "num_workers": 10 // used on evaluation and test
     },
     "audio": {
-        "feature": "mfcc", // spectrogram or melspectrogram or mfcc
+        "feature": "melspectrogram", // spectrogram or melspectrogram or mfcc
         // wave load paramers
         "sample_rate": 16000,
         "normalize": true, // if true, then output is divided by 1 << 31 (assumes signed 32-bit audio), and normalizes to [-1, 1]. If number, then output is divided by that number If callable, then the output is passed as a parameter to the given function, then the output is divided by the result. 

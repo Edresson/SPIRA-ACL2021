@@ -123,11 +123,28 @@ class NoamLR(torch.optim.lr_scheduler._LRScheduler):
             for base_lr in self.base_lrs
         ]
 
+def binary_acc(y_pred, y):
+    """Calculates model accuracy
+    
+    Arguments:
+        y_pred {torch.Tensor} -- Output of model between 0 and 1
+        y {torch.Tensor} -- labels/target values
+    
+    Returns:
+        [torch.Tensor] -- accuracy
+    """
+    y_pred_tag = torch.round(y_pred)
+    correct_results_sum = (y_pred_tag == y).float().sum()
+    n = y.nelement() 
+    acc = correct_results_sum/n
+    acc = acc * 100
+    return acc.item()
+
 
 def save_best_checkpoint(log_dir, model, optimizer, c, step, val_loss, best_loss):
     if val_loss < best_loss:
         best_loss = val_loss
-        save_path = os.path.join(log_dir, 'checkpoint_%d.pt' % step)
+        save_path = os.path.join(log_dir, 'best_checkpoint.pt')
         torch.save({
             'model': model.state_dict(),
             'optimizer': optimizer.state_dict(),
