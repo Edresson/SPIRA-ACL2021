@@ -1,5 +1,5 @@
 {
-    "model_name":"spiraconv_v1", // spiraconv_v1 and spiraconv_v2
+    "model_name":"spiraconv_v2", // spiraconv_v1 and spiraconv_v2
     "seed":42,
     "dataset":{
         "padding_with_max_lenght": true,// if true, the timestep axis will be padded with the longest sequence, else, the timestep will be dynamic and the network will predict a vector of the size of the timestep on the output (if you use convulsions it can decrease)
@@ -29,11 +29,12 @@
         "warmup_steps": 1000, //default 4000, Noam decay steps to increase the learning rate from 0 to "lr"
         "epochs": 1000,
         "learning_rate": 1e-3, // Initial learning rate. If Noam decay is active, maximum learning rate.
+        "weight_decay": 0.01,  // Weight decay rate for optimizer
         "optimizer":"adam",
-        "batch_size": 70,
+        "batch_size": 30,
         "seed": 42,
         "num_workers": 14,
-        "logs_path": "../checkpoints/spiraconv-trained-with-SPIRA_Dataset_V1_MEL_SPEC/",
+        "logs_path": "../checkpoints/spiraconv-trained-with-SPIRA_Dataset_V1_MFCC/",
         "reinit_layers": null,
         "summary_interval": 10,
         "checkpoint_interval": 500
@@ -51,7 +52,7 @@
         "num_workers": 10 // used on evaluation and test
     },
     "audio": {
-        "feature": "melspectrogram", // spectrogram or melspectrogram or mfcc
+        "feature": "mfcc", // spectrogram or melspectrogram or mfcc
         // wave load paramers
         "sample_rate": 16000,
         "normalize": true, // if true, then output is divided by 1 << 31 (assumes signed 32-bit audio), and normalizes to [-1, 1]. If number, then output is divided by that number If callable, then the output is passed as a parameter to the given function, then the output is divided by the result. 

@@ -66,7 +66,7 @@ def run_test(args, checkpoint_path, testloader, c, model_name, ap, cuda=True):
     if(model_name == 'spiraconv_v1'):
         model = SpiraConvV1(c)
     elif (model_name == 'spiraconv_v2'):
-        model = SpiraConvV1(c)
+        model = SpiraConvV2(c)
     #elif(model_name == 'voicesplit'):
     else:
         raise Exception(" The model '"+model_name+"' is not suported")

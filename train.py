@@ -20,7 +20,7 @@ from utils.tensorboard import TensorboardWriter
 
 from utils.dataset import train_dataloader, eval_dataloader
 
-from models.spiraconv import SpiraConvV1
+from models.spiraconv import SpiraConvV1, SpiraConvV2
 from utils.audio_processor import AudioProcessor 
 
 def validation(criterion, ap, model, c, testloader, tensorboard, step,  cuda):
@@ -57,13 +57,15 @@ def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, 
     padding_with_max_lenght = c.dataset['padding_with_max_lenght']
     if(model_name == 'spiraconv_v1'):
         model = SpiraConvV1(c)
+    elif (model_name == 'spiraconv_v2'):
+        model = SpiraConvV2(c)
     #elif(model_name == 'voicesplit'):
     else:
         raise Exception(" The model '"+model_name+"' is not suported")
 
     if c.train_config['optimizer'] == 'adam':
         optimizer = torch.optim.Adam(model.parameters(),
-                                     lr=c.train_config['learning_rate'])
+                                     lr=c.train_config['learning_rate'], weight_decay=c.train_config['weight_decay'])
     else:
         raise Exception("The %s  not is a optimizer supported" % c.train['optimizer'])
 

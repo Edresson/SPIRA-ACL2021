@@ -7,6 +7,7 @@ import torch.nn.functional as F
 from utils.generic_utils import Mish
 
 class SpiraConvV2(nn.Module):
+    ''' Is the same than V1 but we change batchnorm to Group Norm'''
     def __init__(self, config):
         super(SpiraConvV2, self).__init__()
         self.config = config
@@ -25,23 +26,19 @@ class SpiraConvV2(nn.Module):
             raise ValueError('Feature %s Dont is supported'%self.config.audio['feature'])
         convs = [
             # cnn1
-            nn.Dropout(p=0.5), nn.Conv2d(1, 64, kernel_size=(7,1), dilation=(2, 1)),
-            nn.BatchNorm2d(64), Mish(), nn.MaxPool2d(kernel_size=(2,1)), nn.Dropout(p=0.7), 
+            nn.Conv2d(1, 32, kernel_size=(7,1), dilation=(2, 1)),
+            nn.GroupNorm(16, 32), Mish(), nn.MaxPool2d(kernel_size=(2,1)), nn.Dropout(p=0.7), 
             
             # cnn2
-            nn.Conv2d(64, 32, kernel_size=(5, 1), dilation=(2, 1)),
-            nn.BatchNorm2d(32), Mish(),  nn.MaxPool2d(kernel_size=(2,1)), nn.Dropout(p=0.7), 
+            nn.Conv2d(32, 16, kernel_size=(5, 1), dilation=(2, 1)),
+            nn.GroupNorm(8, 16), Mish(),  nn.MaxPool2d(kernel_size=(2,1)), nn.Dropout(p=0.7), 
 
             # cnn3
-            nn.Conv2d(32, 16, kernel_size=(3, 1), dilation=(2, 1)), 
-            nn.BatchNorm2d(16), Mish(),  nn.MaxPool2d(kernel_size=(2,1)), nn.Dropout(p=0.7), 
+            nn.Conv2d(16, 8, kernel_size=(3, 1), dilation=(2, 1)), 
+            nn.GroupNorm(4, 8), Mish(),  nn.MaxPool2d(kernel_size=(2,1)), nn.Dropout(p=0.7), 
             # cnn4
-            nn.Conv2d(16, 8, kernel_size=(2, 1), dilation=(2, 1)), 
-            nn.BatchNorm2d(8), Mish(), nn.Dropout(p=0.7),
-             
-            # cnn 5 
             nn.Conv2d(8, 4, kernel_size=(2, 1), dilation=(1, 1)), 
-            nn.BatchNorm2d(4), Mish(), nn.Dropout(p=0.7)]
+            nn.GroupNorm(2, 4), Mish(), nn.Dropout(p=0.7)]
 
         self.conv = nn.Sequential(*convs)
 
@@ -63,7 +60,6 @@ class SpiraConvV2(nn.Module):
         self.mish = Mish()
         self.fc2 = nn.Linear(self.config.model['fc1_dim'], self.config.model['fc2_dim'])
         self.dropout = nn.Dropout(p=0.7)
-
     def forward(self, x):
         # x: [B, T, num_feature]
         x = x.unsqueeze(1)
