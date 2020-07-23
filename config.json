@@ -1,5 +1,5 @@
 {
-    "model_name":"spiraconv_v2", // spiraconv_v1 and spiraconv_v2
+    "model_name":"spiraconv_v1", // spiraconv_v1 and spiraconv_v2
     "seed":42,
     "dataset":{
         "padding_with_max_lenght": true,// if true, the timestep axis will be padded with the longest sequence, else, the timestep will be dynamic and the network will predict a vector of the size of the timestep on the output (if you use convulsions it can decrease)

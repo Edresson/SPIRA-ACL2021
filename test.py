@@ -3,6 +3,7 @@ import math
 import torch
 import torch.nn as nn
 import traceback
+import pandas as pd
 
 import time
 import numpy as np
@@ -23,7 +24,7 @@ from utils.dataset import test_dataloader
 from models.spiraconv import SpiraConvV1, SpiraConvV2
 from utils.audio_processor import AudioProcessor 
 
-def test(criterion, ap, model, c, testloader, step,  cuda):
+def test(criterion, ap, model, c, testloader, step,  cuda, confusion_matrix=False):
     padding_with_max_lenght = c.dataset['padding_with_max_lenght']
     losses = []
     accs = []
@@ -31,6 +32,8 @@ def test(criterion, ap, model, c, testloader, step,  cuda):
     model.eval()
     loss = 0 
     acc = 0
+    preds = []
+    targets = []
     with torch.no_grad():
         for feature, target in testloader:       
             #try:
@@ -50,7 +53,15 @@ def test(criterion, ap, model, c, testloader, step,  cuda):
             # calculate binnary accuracy
             y_pred_tag = torch.round(output)
             acc += (y_pred_tag == target).float().sum().item()
-
+            preds += y_pred_tag.reshape(-1).int().cpu().numpy().tolist()
+            targets += target.reshape(-1).int().cpu().numpy().tolist()
+        if confusion_matrix:
+            print("======== Confusion Matrix ==========")
+            y_target = pd.Series(targets, name='Target')
+            y_pred = pd.Series(preds, name='Predicted')
+            df_confusion = pd.crosstab(y_target, y_pred, rownames=['Target'], colnames=['Predicted'], margins=True)
+            print(df_confusion)
+            
         mean_acc = acc / len(testloader.dataset)
         mean_loss = loss / len(testloader.dataset)
     print("Test\n Loss:", mean_loss, "Acurracy: ", mean_acc)
@@ -95,7 +106,7 @@ def run_test(args, checkpoint_path, testloader, c, model_name, ap, cuda=True):
         model = model.cuda()
     
     model.train(False)
-    test_acc = test(criterion, ap, model, c, testloader, step, cuda=cuda)
+    test_acc = test(criterion, ap, model, c, testloader, step, cuda=cuda, confusion_matrix=True)
         
 
 if __name__ == '__main__':
