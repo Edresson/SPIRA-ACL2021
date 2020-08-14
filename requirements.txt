@@ -1,0 +1,9 @@
+tqdm
+numpy
+matplotlib
+Pillow
+tensorboardX
+pandas
+PyYAML
+sklearn
+torchaudio
