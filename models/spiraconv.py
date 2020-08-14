@@ -7,7 +7,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from utils.generic_utils import Mish
 
-from models.convLSTM.utfpr_convLSTM_v1 import utfpr_convLSTM_v1, weights_init
+from models.conv_lstm import utfpr_convLSTM_v1, weights_init
 
 class UTF_SPIRA_Conv_v1(nn.Module):
     ''' Is the same than V1 but we change batchnorm to Group Norm'''
