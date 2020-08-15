@@ -8,7 +8,7 @@ Alternatively, you can create an environment with the provided file.
 
 `conda env create -f spira_environment.yml`
     
-## Trainning the model:
+## Training the model:
 
 ```
 python train.py [-c, --config_path] [--checkpoint_path]
@@ -40,8 +40,6 @@ python test.py [-t, --test_csv] [-r, --test_root_dir] [-c, --config_path] [--che
         *'--num_workers', type=int, default=10, help="Number of Workers for test data load"
         *'--no_insert_noise', type=bool, default=False, help=" No insert noise in test ?"
 ```
-
-### Analysing the model:
 
 ## Adding new models: 
    
