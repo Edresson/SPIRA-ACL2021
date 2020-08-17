@@ -82801,3 +82801,1263 @@ Epoch 999 End !
 =================================================
 Validation:
  Loss: 3.484952725330004e-05 Acurracy:  1.0
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Starting new training run
+Write summary at step 10  Loss:  0.7072760462760925
+Write summary at step 20  Loss:  0.7136728763580322
+Write summary at step 30  Loss:  0.7613053321838379
+Write summary at step 40  Loss:  0.8332867622375488
+Write summary at step 50  Loss:  0.6969942450523376
+=================================================
+Epoch 0 End !
+=================================================
+Validation:
+ Loss: 3.7776794731616974 Acurracy:  3.59375
+
+ > BEST MODEL (3.77768) : ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/best_checkpoint.pt
+Write summary at step 60  Loss:  0.5667390823364258
+Write summary at step 70  Loss:  0.8800753355026245
+Write summary at step 80  Loss:  0.5047287940979004
+Write summary at step 90  Loss:  0.5693042278289795
+Write summary at step 100  Loss:  0.5612226128578186
+Write summary at step 110  Loss:  1.0734596252441406
+=================================================
+Epoch 1 End !
+=================================================
+Validation:
+ Loss: 3.89983731508255 Acurracy:  3.59375
+Write summary at step 120  Loss:  0.5811659693717957
+Write summary at step 130  Loss:  0.500652551651001
+Write summary at step 140  Loss:  1.085895299911499
+Write summary at step 150  Loss:  0.6192294955253601
+Write summary at step 160  Loss:  0.559754490852356
+Write summary at step 170  Loss:  0.5359131097793579
+=================================================
+Epoch 2 End !
+=================================================
+Validation:
+ Loss: 3.758488491177559 Acurracy:  3.59375
+
+ > BEST MODEL (3.75849) : ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/best_checkpoint.pt
+Write summary at step 180  Loss:  0.8203052282333374
+Write summary at step 190  Loss:  0.4575072228908539
+Write summary at step 200  Loss:  0.5910441279411316
+Write summary at step 210  Loss:  0.7144216895103455
+Write summary at step 220  Loss:  0.6806272864341736
+Write summary at step 230  Loss:  0.8482203483581543
+=================================================
+Epoch 3 End !
+=================================================
+Validation:
+ Loss: 3.6838492155075073 Acurracy:  3.8125
+
+ > BEST MODEL (3.68385) : ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/best_checkpoint.pt
+Write summary at step 240  Loss:  0.6533476114273071
+Write summary at step 250  Loss:  0.5662800669670105
+Write summary at step 260  Loss:  0.9521690607070923
+Write summary at step 270  Loss:  0.6539498567581177
+Write summary at step 280  Loss:  0.4953618347644806
+Write summary at step 290  Loss:  0.5048292279243469
+=================================================
+Epoch 4 End !
+=================================================
+Validation:
+ Loss: 3.618814915418625 Acurracy:  3.59375
+
+ > BEST MODEL (3.61881) : ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/best_checkpoint.pt
+Write summary at step 300  Loss:  0.6256435513496399
+Write summary at step 310  Loss:  0.5472566485404968
+Write summary at step 320  Loss:  0.7469971776008606
+Write summary at step 330  Loss:  0.7003250122070312
+Write summary at step 340  Loss:  0.6569184064865112
+=================================================
+Epoch 5 End !
+=================================================
+Validation:
+ Loss: 3.6463122814893723 Acurracy:  3.59375
+Write summary at step 350  Loss:  0.8042630553245544
+Write summary at step 360  Loss:  0.8192324638366699
+Write summary at step 370  Loss:  0.5683552622795105
+Write summary at step 380  Loss:  0.6402556896209717
+Write summary at step 390  Loss:  0.5501494407653809
+Write summary at step 400  Loss:  0.5398743152618408
+=================================================
+Epoch 6 End !
+=================================================
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Starting new training run
+Validation:
+ Loss: 4.046764373779297 Acurracy:  3.59375
+Write summary at step 10  Loss:  0.6952077746391296
+Write summary at step 20  Loss:  0.7238801121711731
+Write summary at step 30  Loss:  0.7480604648590088
+Write summary at step 40  Loss:  0.7945328950881958
+Write summary at step 50  Loss:  0.696035623550415
+=================================================
+Epoch 0 End !
+=================================================
+Write summary at step 410  Loss:  0.5902354717254639
+Write summary at step 420  Loss:  0.33584046363830566
+Write summary at step 430  Loss:  0.6247506141662598
+Write summary at step 440  Loss:  0.5468626618385315
+Write summary at step 450  Loss:  0.6114052534103394
+Write summary at step 460  Loss:  0.6693276166915894
+=================================================
+Epoch 7 End !
+=================================================
+Validation:
+ Loss: 3.1357300728559494 Acurracy:  4.71875
+
+ > BEST MODEL (3.13573) : ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/best_checkpoint.pt
+Validation:
+ Loss: 3.8402481079101562 Acurracy:  3.59375
+
+ > BEST MODEL (3.84025) : ../checkpoints/Paper-Experiments/exp3.2/spiraconv_v2/best_checkpoint.pt
+Write summary at step 470  Loss:  0.5409536957740784
+Write summary at step 480  Loss:  0.4764375388622284
+Write summary at step 490  Loss:  0.579928457736969
+Write summary at step 500  Loss:  0.6495903134346008
+Saved checkpoint to: ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/checkpoint_500.pt
+Write summary at step 60  Loss:  0.5975351333618164
+Write summary at step 70  Loss:  0.886108934879303
+Write summary at step 80  Loss:  0.5481047034263611
+Write summary at step 90  Loss:  0.5683073997497559
+Write summary at step 100  Loss:  0.5441305637359619
+Write summary at step 110  Loss:  1.1021738052368164
+=================================================
+Epoch 1 End !
+=================================================
+Validation:
+ Loss: 2.973171904683113 Acurracy:  4.40625
+
+ > BEST MODEL (2.97317) : ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/best_checkpoint.pt
+Write summary at step 510  Loss:  0.5498365759849548
+Write summary at step 520  Loss:  0.8139610290527344
+=================================================
+Epoch 8 End !
+=================================================
+Validation:
+ Loss: 3.9221673905849457 Acurracy:  3.59375
+Validation:
+ Loss: 2.976350426673889 Acurracy:  4.0625
+Write summary at step 120  Loss:  0.5779353380203247
+Write summary at step 130  Loss:  0.5293369293212891
+Write summary at step 140  Loss:  1.0694234371185303
+Write summary at step 150  Loss:  0.6114445924758911
+Write summary at step 160  Loss:  0.5554429888725281
+Write summary at step 170  Loss:  0.49276813864707947
+=================================================
+Epoch 2 End !
+=================================================
+Write summary at step 530  Loss:  0.5241096615791321
+Write summary at step 540  Loss:  0.6311452388763428
+Write summary at step 550  Loss:  0.46289438009262085
+Write summary at step 560  Loss:  0.41093164682388306
+Write summary at step 570  Loss:  0.43483325839042664
+Write summary at step 580  Loss:  0.5968449711799622
+=================================================
+Epoch 9 End !
+=================================================
+Validation:
+ Loss: 2.4669802337884903 Acurracy:  4.9375
+
+ > BEST MODEL (2.46698) : ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/best_checkpoint.pt
+Validation:
+ Loss: 3.790261834859848 Acurracy:  3.59375
+
+ > BEST MODEL (3.79026) : ../checkpoints/Paper-Experiments/exp3.2/spiraconv_v2/best_checkpoint.pt
+Write summary at step 590  Loss:  0.6706482172012329
+Write summary at step 600  Loss:  0.7470149993896484
+Write summary at step 610  Loss:  0.5188899040222168
+Write summary at step 620  Loss:  0.5456018447875977
+Write summary at step 630  Loss:  0.49732017517089844
+=================================================
+Epoch 10 End !
+=================================================
+Write summary at step 180  Loss:  0.7743348479270935
+Write summary at step 190  Loss:  0.45906969904899597
+Write summary at step 200  Loss:  0.578291654586792
+Write summary at step 210  Loss:  0.76375412940979
+Write summary at step 220  Loss:  0.6598012447357178
+Write summary at step 230  Loss:  0.8007122874259949
+=================================================
+Epoch 3 End !
+=================================================
+Validation:
+ Loss: 3.090757727622986 Acurracy:  4.21875
+Validation:
+ Loss: 3.9058591723442078 Acurracy:  3.28125
+Write summary at step 640  Loss:  0.5643332004547119
+Write summary at step 650  Loss:  0.42638394236564636
+Write summary at step 660  Loss:  0.41403454542160034
+Write summary at step 670  Loss:  0.3466476798057556
+Write summary at step 680  Loss:  0.44371655583381653
+Write summary at step 690  Loss:  0.32985126972198486
+=================================================
+Epoch 11 End !
+=================================================
+Write summary at step 240  Loss:  0.5550520420074463
+Write summary at step 250  Loss:  0.5289518237113953
+Write summary at step 260  Loss:  0.9478612542152405
+Write summary at step 270  Loss:  0.6317259073257446
+Write summary at step 280  Loss:  0.5223698616027832
+Write summary at step 290  Loss:  0.40209898352622986
+=================================================
+Epoch 4 End !
+=================================================
+Validation:
+ Loss: 5.694042155519128 Acurracy:  4.0
+Validation:
+ Loss: 3.687768191099167 Acurracy:  3.625
+
+ > BEST MODEL (3.68777) : ../checkpoints/Paper-Experiments/exp3.2/spiraconv_v2/best_checkpoint.pt
+Write summary at step 700  Loss:  0.6286695003509521
+Write summary at step 710  Loss:  0.5503119826316833
+Write summary at step 720  Loss:  0.4857521057128906
+Write summary at step 730  Loss:  1.0175713300704956
+Write summary at step 740  Loss:  0.47614917159080505
+Write summary at step 750  Loss:  0.8167807459831238
+=================================================
+Epoch 12 End !
+=================================================
+Validation:
+ Loss: 3.0415524397976696 Acurracy:  4.375
+Write summary at step 300  Loss:  0.5923519730567932
+Write summary at step 310  Loss:  0.5319032073020935
+Write summary at step 320  Loss:  0.7598296403884888
+Write summary at step 330  Loss:  0.7513931393623352
+Write summary at step 340  Loss:  0.5744870901107788
+=================================================
+Epoch 5 End !
+=================================================
+Validation:
+ Loss: 3.6123367249965668 Acurracy:  3.8125
+
+ > BEST MODEL (3.61234) : ../checkpoints/Paper-Experiments/exp3.2/spiraconv_v2/best_checkpoint.pt
+Write summary at step 760  Loss:  0.5251072645187378
+Write summary at step 770  Loss:  0.7294043302536011
+Write summary at step 780  Loss:  0.2645995616912842
+Write summary at step 790  Loss:  0.43691959977149963
+Write summary at step 800  Loss:  0.30146414041519165
+Write summary at step 810  Loss:  1.0561851263046265
+=================================================
+Epoch 13 End !
+=================================================
+Validation:
+ Loss: 4.182333738543093 Acurracy:  3.65625
+Write summary at step 350  Loss:  0.7936133146286011
+Write summary at step 360  Loss:  0.7925778031349182
+Write summary at step 370  Loss:  0.544987142086029
+Write summary at step 380  Loss:  0.6217625737190247
+Write summary at step 390  Loss:  0.4776074290275574
+Write summary at step 400  Loss:  0.5517706274986267
+=================================================
+Epoch 6 End !
+=================================================
+Validation:
+ Loss: 4.018855303525925 Acurracy:  3.78125
+Write summary at step 820  Loss:  0.5377365350723267
+Write summary at step 830  Loss:  0.45152348279953003
+Write summary at step 840  Loss:  0.4483374059200287
+Write summary at step 850  Loss:  0.7621127367019653
+Write summary at step 860  Loss:  0.5562646389007568
+Write summary at step 870  Loss:  0.6452100872993469
+=================================================
+Epoch 14 End !
+=================================================
+Validation:
+ Loss: 2.666143000125885 Acurracy:  4.875
+Write summary at step 410  Loss:  0.3843090534210205
+Write summary at step 420  Loss:  0.29061585664749146
+Write summary at step 430  Loss:  0.5336881279945374
+Write summary at step 440  Loss:  0.7676740884780884
+Write summary at step 450  Loss:  0.5505645871162415
+Write summary at step 460  Loss:  0.8427245020866394
+=================================================
+Epoch 7 End !
+=================================================
+Validation:
+ Loss: 3.8431593477725983 Acurracy:  3.8125
+Write summary at step 880  Loss:  0.48625504970550537
+Write summary at step 890  Loss:  0.7512984275817871
+Write summary at step 900  Loss:  0.5725193023681641
+Write summary at step 910  Loss:  0.47445762157440186
+Write summary at step 920  Loss:  0.4666023850440979
+=================================================
+Epoch 15 End !
+=================================================
+Validation:
+ Loss: 4.065250691026449 Acurracy:  3.875
+Write summary at step 470  Loss:  0.5856961011886597
+Write summary at step 480  Loss:  0.4205165207386017
+Write summary at step 490  Loss:  0.5915362238883972
+Write summary at step 500  Loss:  0.46049508452415466
+Saved checkpoint to: ../checkpoints/Paper-Experiments/exp3.2/spiraconv_v2/checkpoint_500.pt
+Write summary at step 930  Loss:  0.43079912662506104
+Write summary at step 940  Loss:  0.81345534324646
+Write summary at step 950  Loss:  0.3731692135334015
+Write summary at step 960  Loss:  0.3449402153491974
+Write summary at step 970  Loss:  0.22452086210250854
+Write summary at step 980  Loss:  0.3012017607688904
+=================================================
+Epoch 16 End !
+=================================================
+Validation:
+ Loss: 3.6997331380844116 Acurracy:  3.875
+Write summary at step 510  Loss:  0.6013635993003845
+Write summary at step 520  Loss:  0.7709267139434814
+=================================================
+Epoch 8 End !
+=================================================
+Validation:
+ Loss: 5.442755958123598 Acurracy:  3.96875
+Validation:
+ Loss: 3.696272760629654 Acurracy:  4.1875
+Write summary at step 990  Loss:  1.1615394353866577
+Write summary at step 1000  Loss:  0.6217268109321594
+Saved checkpoint to: ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/checkpoint_1000.pt
+Write summary at step 530  Loss:  0.5676413774490356
+Write summary at step 540  Loss:  0.7021215558052063
+Write summary at step 550  Loss:  0.4367332458496094
+Write summary at step 560  Loss:  0.4530266523361206
+Write summary at step 570  Loss:  0.6036420464515686
+Write summary at step 580  Loss:  0.6094619035720825
+=================================================
+Epoch 9 End !
+=================================================
+Validation:
+ Loss: 3.2593253776431084 Acurracy:  4.1875
+Write summary at step 1010  Loss:  0.49675971269607544
+Write summary at step 1020  Loss:  0.48459407687187195
+Write summary at step 1030  Loss:  0.5483199954032898
+Write summary at step 1040  Loss:  0.8015932440757751
+=================================================
+Epoch 17 End !
+=================================================
+Validation:
+ Loss: 3.071344403550029 Acurracy:  4.6875
+Validation:
+ Loss: 3.787365436553955 Acurracy:  3.84375
+Write summary at step 1050  Loss:  0.44272685050964355
+Write summary at step 1060  Loss:  0.47642695903778076
+Write summary at step 1070  Loss:  0.43600645661354065
+Write summary at step 1080  Loss:  0.24590957164764404
+Write summary at step 1090  Loss:  0.25538504123687744
+Write summary at step 1100  Loss:  0.3721159100532532
+=================================================
+Epoch 18 End !
+=================================================
+Write summary at step 590  Loss:  0.3969007432460785
+Write summary at step 600  Loss:  0.8072112202644348
+Write summary at step 610  Loss:  0.44098857045173645
+Write summary at step 620  Loss:  0.5444291234016418
+Write summary at step 630  Loss:  0.46118655800819397
+=================================================
+Epoch 10 End !
+=================================================
+Validation:
+ Loss: 3.771224803291261 Acurracy:  4.5625
+Validation:
+ Loss: 3.7404846847057343 Acurracy:  3.78125
+Write summary at step 1110  Loss:  0.36042100191116333
+Write summary at step 1120  Loss:  1.389636516571045
+Write summary at step 1130  Loss:  0.575487494468689
+Write summary at step 1140  Loss:  0.37944599986076355
+Write summary at step 1150  Loss:  0.5897149443626404
+Write summary at step 1160  Loss:  0.8583078980445862
+=================================================
+Epoch 19 End !
+=================================================
+Write summary at step 640  Loss:  0.7716072201728821
+Write summary at step 650  Loss:  0.5896809697151184
+Write summary at step 660  Loss:  0.5239639282226562
+Write summary at step 670  Loss:  0.5853497982025146
+Write summary at step 680  Loss:  0.6594369411468506
+Write summary at step 690  Loss:  0.5489474534988403
+=================================================
+Epoch 11 End !
+=================================================
+Validation:
+ Loss: 3.9642643071711063 Acurracy:  3.78125
+Validation:
+ Loss: 3.4259896874427795 Acurracy:  3.84375
+
+ > BEST MODEL (3.42599) : ../checkpoints/Paper-Experiments/exp3.2/spiraconv_v2/best_checkpoint.pt
+Write summary at step 1170  Loss:  0.9292717576026917
+Write summary at step 1180  Loss:  0.7958511114120483
+Write summary at step 1190  Loss:  0.38041967153549194
+Write summary at step 1200  Loss:  0.6129863858222961
+Write summary at step 1210  Loss:  0.27978193759918213
+=================================================
+Epoch 20 End !
+=================================================
+Validation:
+ Loss: 4.34472166467458 Acurracy:  3.71875
+Write summary at step 700  Loss:  0.6887513399124146
+Write summary at step 710  Loss:  0.6076667308807373
+Write summary at step 720  Loss:  0.6342830061912537
+Write summary at step 730  Loss:  0.7485752105712891
+Write summary at step 740  Loss:  0.4461939334869385
+Write summary at step 750  Loss:  0.5199215412139893
+=================================================
+Epoch 12 End !
+=================================================
+Validation:
+ Loss: 3.8738984167575836 Acurracy:  3.6875
+Write summary at step 1220  Loss:  0.16977696120738983
+Write summary at step 1230  Loss:  0.549686849117279
+Write summary at step 1240  Loss:  0.5815132260322571
+Write summary at step 1250  Loss:  0.6085363030433655
+Write summary at step 1260  Loss:  0.3332287669181824
+Write summary at step 1270  Loss:  0.5002291798591614
+=================================================
+Epoch 21 End !
+=================================================
+Validation:
+ Loss: 2.8844186887145042 Acurracy:  4.53125
+Write summary at step 760  Loss:  0.40505218505859375
+Write summary at step 770  Loss:  0.6860365271568298
+Write summary at step 780  Loss:  0.5077252388000488
+Write summary at step 790  Loss:  0.6274096369743347
+Write summary at step 800  Loss:  0.686305582523346
+Write summary at step 810  Loss:  0.8577870726585388
+=================================================
+Epoch 13 End !
+=================================================
+Validation:
+ Loss: 3.7181379795074463 Acurracy:  3.5625
+Write summary at step 1280  Loss:  0.3462706506252289
+Write summary at step 1290  Loss:  0.2821515202522278
+Write summary at step 1300  Loss:  0.6496090292930603
+Write summary at step 1310  Loss:  0.5346564650535583
+Write summary at step 1320  Loss:  0.28307417035102844
+Write summary at step 1330  Loss:  0.3970389664173126
+=================================================
+Epoch 22 End !
+=================================================
+Validation:
+ Loss: 2.6639409605413675 Acurracy:  4.59375
+Write summary at step 820  Loss:  0.5761857628822327
+Write summary at step 830  Loss:  0.45951610803604126
+Write summary at step 840  Loss:  0.5312480330467224
+Write summary at step 850  Loss:  1.0736140012741089
+Write summary at step 860  Loss:  0.5499143004417419
+Write summary at step 870  Loss:  0.5511103868484497
+=================================================
+Epoch 14 End !
+=================================================
+Validation:
+ Loss: 3.8321644961833954 Acurracy:  3.5
+Write summary at step 1340  Loss:  0.7311490178108215
+Write summary at step 1350  Loss:  0.489565908908844
+Write summary at step 1360  Loss:  0.289509117603302
+Write summary at step 1370  Loss:  0.5404510498046875
+Write summary at step 1380  Loss:  0.6382027268409729
+Write summary at step 1390  Loss:  0.3339369595050812
+=================================================
+Epoch 23 End !
+=================================================
+Validation:
+ Loss: 2.6335650589317083 Acurracy:  4.5625
+Write summary at step 880  Loss:  0.5694906115531921
+Write summary at step 890  Loss:  0.6068536639213562
+Write summary at step 900  Loss:  0.4175502061843872
+Write summary at step 910  Loss:  0.41749244928359985
+Write summary at step 920  Loss:  0.5561414361000061
+=================================================
+Epoch 15 End !
+=================================================
+Validation:
+ Loss: 3.774925619363785 Acurracy:  3.09375
+Write summary at step 1400  Loss:  0.36658382415771484
+Write summary at step 1410  Loss:  0.18847668170928955
+Write summary at step 1420  Loss:  0.4826548993587494
+Write summary at step 1430  Loss:  0.786320149898529
+Write summary at step 1440  Loss:  0.4370488226413727
+Write summary at step 1450  Loss:  0.40899625420570374
+=================================================
+Epoch 24 End !
+=================================================
+Validation:
+ Loss: 2.1812417693436146 Acurracy:  5.0
+
+ > BEST MODEL (2.18124) : ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/best_checkpoint.pt
+Write summary at step 930  Loss:  0.6260261535644531
+Write summary at step 940  Loss:  0.6411331295967102
+Write summary at step 950  Loss:  0.5840920209884644
+Write summary at step 960  Loss:  0.6200162768363953
+Write summary at step 970  Loss:  0.5021504163742065
+Write summary at step 980  Loss:  0.4382636547088623
+=================================================
+Epoch 16 End !
+=================================================
+Write summary at step 1460  Loss:  0.25157275795936584
+Write summary at step 1470  Loss:  0.34001338481903076
+Write summary at step 1480  Loss:  1.0758917331695557
+Write summary at step 1490  Loss:  0.40835732221603394
+Write summary at step 1500  Loss:  0.7185324430465698
+Saved checkpoint to: ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/checkpoint_1500.pt
+Validation:
+ Loss: 3.6863828897476196 Acurracy:  3.6875
+Validation:
+ Loss: 3.7033427795395255 Acurracy:  4.53125
+=================================================
+Epoch 25 End !
+=================================================
+Write summary at step 990  Loss:  0.5339400172233582
+Write summary at step 1000  Loss:  0.4595784842967987
+Saved checkpoint to: ../checkpoints/Paper-Experiments/exp3.2/spiraconv_v2/checkpoint_1000.pt
+Validation:
+ Loss: 2.1543341679498553 Acurracy:  4.875
+
+ > BEST MODEL (2.15433) : ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/best_checkpoint.pt
+Validation:
+ Loss: 3.305696129798889 Acurracy:  4.0
+
+ > BEST MODEL (3.30570) : ../checkpoints/Paper-Experiments/exp3.2/spiraconv_v2/best_checkpoint.pt
+Write summary at step 1010  Loss:  1.083032250404358
+Write summary at step 1020  Loss:  0.7817422151565552
+Write summary at step 1030  Loss:  0.6324729323387146
+Write summary at step 1040  Loss:  0.8520765900611877
+=================================================
+Epoch 17 End !
+=================================================
+Write summary at step 1510  Loss:  0.2773053050041199
+Write summary at step 1520  Loss:  0.7334199547767639
+Write summary at step 1530  Loss:  0.6354188323020935
+Write summary at step 1540  Loss:  0.4044308364391327
+Write summary at step 1550  Loss:  0.46153074502944946
+Write summary at step 1560  Loss:  0.29547104239463806
+=================================================
+Epoch 26 End !
+=================================================
+Validation:
+ Loss: 3.5521614104509354 Acurracy:  3.78125
+Validation:
+ Loss: 3.5738711352460086 Acurracy:  4.125
+Write summary at step 1050  Loss:  0.576323926448822
+Write summary at step 1060  Loss:  0.48715341091156006
+Write summary at step 1070  Loss:  0.5948570370674133
+Write summary at step 1080  Loss:  0.5630083680152893
+Write summary at step 1090  Loss:  0.5127665996551514
+Write summary at step 1100  Loss:  0.4913027882575989
+=================================================
+Epoch 18 End !
+=================================================
+Write summary at step 1570  Loss:  0.4473525583744049
+Write summary at step 1580  Loss:  0.4356495141983032
+Write summary at step 1590  Loss:  0.7023525238037109
+Write summary at step 1600  Loss:  0.4611964821815491
+Write summary at step 1610  Loss:  1.0787043571472168
+Write summary at step 1620  Loss:  0.5573887228965759
+=================================================
+Epoch 27 End !
+=================================================
+Validation:
+ Loss: 3.4313162565231323 Acurracy:  3.84375
+Validation:
+ Loss: 4.4361332496628165 Acurracy:  4.1875
+Write summary at step 1110  Loss:  0.6384209990501404
+Write summary at step 1120  Loss:  0.9094250798225403
+Write summary at step 1130  Loss:  0.6198753714561462
+Write summary at step 1140  Loss:  0.4724031686782837
+Write summary at step 1150  Loss:  0.4748877286911011
+Write summary at step 1160  Loss:  0.6655005812644958
+=================================================
+Epoch 19 End !
+=================================================
+Write summary at step 1630  Loss:  0.3358713984489441
+Write summary at step 1640  Loss:  0.6148115992546082
+Write summary at step 1650  Loss:  0.221669539809227
+Write summary at step 1660  Loss:  0.40737056732177734
+Write summary at step 1670  Loss:  0.6084269881248474
+Write summary at step 1680  Loss:  0.20188076794147491
+=================================================
+Epoch 28 End !
+=================================================
+Validation:
+ Loss: 3.349721487611532 Acurracy:  4.15625
+Validation:
+ Loss: 3.2750610783696175 Acurracy:  4.09375
+
+ > BEST MODEL (3.27506) : ../checkpoints/Paper-Experiments/exp3.2/spiraconv_v2/best_checkpoint.pt
+Write summary at step 1690  Loss:  0.47520384192466736
+Write summary at step 1700  Loss:  0.21713322401046753
+Write summary at step 1710  Loss:  0.5767914056777954
+Write summary at step 1720  Loss:  0.4407551884651184
+Write summary at step 1730  Loss:  0.31170642375946045
+Write summary at step 1740  Loss:  0.40170758962631226
+=================================================
+Epoch 29 End !
+=================================================
+Write summary at step 1170  Loss:  1.0403234958648682
+Write summary at step 1180  Loss:  0.7049301862716675
+Write summary at step 1190  Loss:  0.47774627804756165
+Write summary at step 1200  Loss:  0.5903939008712769
+Write summary at step 1210  Loss:  0.4176742434501648
+=================================================
+Epoch 20 End !
+=================================================
+Validation:
+ Loss: 3.568053314462304 Acurracy:  4.0625
+Validation:
+ Loss: 3.3669608682394028 Acurracy:  3.84375
+Write summary at step 1750  Loss:  0.36384209990501404
+Write summary at step 1760  Loss:  0.3867812752723694
+Write summary at step 1770  Loss:  0.30032169818878174
+Write summary at step 1780  Loss:  0.2832612991333008
+Write summary at step 1790  Loss:  0.7500355839729309
+=================================================
+Epoch 30 End !
+=================================================
+Validation:
+ Loss: 2.596947880461812 Acurracy:  4.6875
+Write summary at step 1220  Loss:  0.33478787541389465
+Write summary at step 1230  Loss:  0.8507957458496094
+Write summary at step 1240  Loss:  0.541365385055542
+Write summary at step 1250  Loss:  0.673346221446991
+Write summary at step 1260  Loss:  0.5037650465965271
+Write summary at step 1270  Loss:  0.5105392932891846
+=================================================
+Epoch 21 End !
+=================================================
+Validation:
+ Loss: 3.545962154865265 Acurracy:  3.4375
+Write summary at step 1800  Loss:  0.4464171826839447
+Write summary at step 1810  Loss:  0.2477511167526245
+Write summary at step 1820  Loss:  0.45632699131965637
+Write summary at step 1830  Loss:  0.37546980381011963
+Write summary at step 1840  Loss:  0.35657864809036255
+Write summary at step 1850  Loss:  0.36327916383743286
+=================================================
+Epoch 31 End !
+=================================================
+Validation:
+ Loss: 4.639697793405503 Acurracy:  3.96875
+Write summary at step 1280  Loss:  0.5699928998947144
+Write summary at step 1290  Loss:  0.5457761287689209
+Write summary at step 1300  Loss:  0.5358123779296875
+Write summary at step 1310  Loss:  0.4046323895454407
+Write summary at step 1320  Loss:  0.4427603781223297
+Write summary at step 1330  Loss:  0.5423522591590881
+=================================================
+Epoch 22 End !
+=================================================
+Validation:
+ Loss: 3.180790275335312 Acurracy:  4.25
+
+ > BEST MODEL (3.18079) : ../checkpoints/Paper-Experiments/exp3.2/spiraconv_v2/best_checkpoint.pt
+Write summary at step 1860  Loss:  0.15407854318618774
+Write summary at step 1870  Loss:  0.3687978684902191
+Write summary at step 1880  Loss:  0.48609161376953125
+Write summary at step 1890  Loss:  0.2521887421607971
+Write summary at step 1900  Loss:  0.3076971471309662
+Write summary at step 1910  Loss:  0.5964193344116211
+=================================================
+Epoch 32 End !
+=================================================
+Validation:
+ Loss: 2.3324448158964515 Acurracy:  4.78125
+Write summary at step 1340  Loss:  0.741742730140686
+Write summary at step 1350  Loss:  0.6047374606132507
+Write summary at step 1360  Loss:  0.6857467889785767
+Write summary at step 1370  Loss:  0.581749439239502
+Write summary at step 1380  Loss:  0.7299278378486633
+Write summary at step 1390  Loss:  0.40322062373161316
+=================================================
+Epoch 23 End !
+=================================================
+Validation:
+ Loss: 3.320027858018875 Acurracy:  3.96875
+Write summary at step 1920  Loss:  0.49461546540260315
+Write summary at step 1930  Loss:  0.7635067105293274
+Write summary at step 1940  Loss:  0.5248729586601257
+Write summary at step 1950  Loss:  0.7535690069198608
+Write summary at step 1960  Loss:  0.2747154235839844
+Write summary at step 1970  Loss:  1.0732669830322266
+=================================================
+Epoch 33 End !
+=================================================
+Validation:
+ Loss: 4.649289346765727 Acurracy:  3.84375
+Write summary at step 1400  Loss:  0.5228732228279114
+Write summary at step 1410  Loss:  0.5334071516990662
+Write summary at step 1420  Loss:  0.45812731981277466
+Write summary at step 1430  Loss:  0.6898272633552551
+Write summary at step 1440  Loss:  0.5689194798469543
+Write summary at step 1450  Loss:  0.42695316672325134
+=================================================
+Epoch 24 End !
+=================================================
+Write summary at step 1980  Loss:  0.47559449076652527
+Write summary at step 1990  Loss:  0.4312741756439209
+Write summary at step 2000  Loss:  0.2313041239976883
+Saved checkpoint to: ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/checkpoint_2000.pt
+Validation:
+ Loss: 3.336498960852623 Acurracy:  4.0
+Validation:
+ Loss: 3.7860883604735136 Acurracy:  4.375
+Write summary at step 2010  Loss:  0.40895113348960876
+Write summary at step 2020  Loss:  0.41462990641593933
+Write summary at step 2030  Loss:  0.637180507183075
+=================================================
+Epoch 34 End !
+=================================================
+Validation:
+ Loss: 2.842839626595378 Acurracy:  4.5
+Write summary at step 1460  Loss:  0.38480523228645325
+Write summary at step 1470  Loss:  0.47595977783203125
+Write summary at step 1480  Loss:  0.7146162986755371
+Write summary at step 1490  Loss:  0.8052682280540466
+Write summary at step 1500  Loss:  0.7730274796485901
+Saved checkpoint to: ../checkpoints/Paper-Experiments/exp3.2/spiraconv_v2/checkpoint_1500.pt
+Validation:
+ Loss: 3.2034860849380493 Acurracy:  4.15625
+=================================================
+Epoch 25 End !
+=================================================
+Write summary at step 2040  Loss:  0.3231596052646637
+Write summary at step 2050  Loss:  0.37468189001083374
+Write summary at step 2060  Loss:  0.39257898926734924
+Write summary at step 2070  Loss:  0.28421080112457275
+Write summary at step 2080  Loss:  0.4016591012477875
+=================================================
+Epoch 35 End !
+=================================================
+Validation:
+ Loss: 3.561070054769516 Acurracy:  3.90625
+Validation:
+ Loss: 2.5831402426119894 Acurracy:  4.75
+Write summary at step 2090  Loss:  0.4115689694881439
+Write summary at step 2100  Loss:  0.4314974248409271
+Write summary at step 2110  Loss:  0.5375626087188721
+Write summary at step 2120  Loss:  0.3231194019317627
+Write summary at step 2130  Loss:  0.22503317892551422
+Write summary at step 2140  Loss:  0.2794574797153473
+=================================================
+Epoch 36 End !
+=================================================
+Write summary at step 1510  Loss:  0.5608263611793518
+Write summary at step 1520  Loss:  0.5989018678665161
+Write summary at step 1530  Loss:  0.9566271901130676
+Write summary at step 1540  Loss:  0.4216255247592926
+Write summary at step 1550  Loss:  0.6126346588134766
+Write summary at step 1560  Loss:  0.4512821435928345
+=================================================
+Epoch 26 End !
+=================================================
+Validation:
+ Loss: 2.090681307017803 Acurracy:  5.125
+
+ > BEST MODEL (2.09068) : ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/best_checkpoint.pt
+Validation:
+ Loss: 3.7029001116752625 Acurracy:  3.84375
+Write summary at step 2150  Loss:  0.5313462615013123
+Write summary at step 2160  Loss:  1.0005288124084473
+Write summary at step 2170  Loss:  0.19144442677497864
+Write summary at step 2180  Loss:  0.419479101896286
+Write summary at step 2190  Loss:  0.5231658220291138
+Write summary at step 2200  Loss:  0.34716299176216125
+=================================================
+Epoch 37 End !
+=================================================
+Validation:
+ Loss: 2.942430794239044 Acurracy:  4.21875
+Write summary at step 1570  Loss:  0.40293192863464355
+Write summary at step 1580  Loss:  0.6237378716468811
+Write summary at step 1590  Loss:  1.1157619953155518
+Write summary at step 1600  Loss:  0.6016288995742798
+Write summary at step 1610  Loss:  0.7013654112815857
+Write summary at step 1620  Loss:  0.7790960669517517
+=================================================
+Epoch 27 End !
+=================================================
+Validation:
+ Loss: 2.8742713630199432 Acurracy:  4.65625
+
+ > BEST MODEL (2.87427) : ../checkpoints/Paper-Experiments/exp3.2/spiraconv_v2/best_checkpoint.pt
+Write summary at step 2210  Loss:  0.33060580492019653
+Write summary at step 2220  Loss:  0.4921087920665741
+Write summary at step 2230  Loss:  0.6482961773872375
+Write summary at step 2240  Loss:  0.40714550018310547
+Write summary at step 2250  Loss:  0.17028386890888214
+Write summary at step 2260  Loss:  0.564883291721344
+=================================================
+Epoch 38 End !
+=================================================
+Validation:
+ Loss: 3.3690039531793445 Acurracy:  4.4375
+Write summary at step 1630  Loss:  0.46716490387916565
+Write summary at step 1640  Loss:  0.7744052410125732
+Write summary at step 1650  Loss:  0.4828675389289856
+Write summary at step 1660  Loss:  0.43217235803604126
+Write summary at step 1670  Loss:  0.7101364731788635
+Write summary at step 1680  Loss:  0.5425587296485901
+=================================================
+Epoch 28 End !
+=================================================
+Validation:
+ Loss: 3.1398885846138 Acurracy:  4.375
+Write summary at step 2270  Loss:  0.4046522080898285
+Write summary at step 2280  Loss:  0.7169259190559387
+Write summary at step 2290  Loss:  0.6487639546394348
+Write summary at step 2300  Loss:  0.2414226531982422
+Write summary at step 2310  Loss:  0.9112312197685242
+Write summary at step 2320  Loss:  0.39680230617523193
+=================================================
+Epoch 39 End !
+=================================================
+Validation:
+ Loss: 2.0948224030435085 Acurracy:  4.9375
+Write summary at step 1690  Loss:  0.47162798047065735
+Write summary at step 1700  Loss:  0.48465240001678467
+Write summary at step 1710  Loss:  0.4458267390727997
+Write summary at step 1720  Loss:  0.8078445792198181
+Write summary at step 1730  Loss:  0.8147464990615845
+Write summary at step 1740  Loss:  0.6673081517219543
+=================================================
+Epoch 29 End !
+=================================================
+Validation:
+ Loss: 3.6050101220607758 Acurracy:  3.875
+Write summary at step 2330  Loss:  0.6637749075889587
+Write summary at step 2340  Loss:  0.3267779052257538
+Write summary at step 2350  Loss:  0.9655253887176514
+Write summary at step 2360  Loss:  0.2095290869474411
+Write summary at step 2370  Loss:  0.3328720033168793
+=================================================
+Epoch 40 End !
+=================================================
+Validation:
+ Loss: 2.3105355761945248 Acurracy:  4.84375
+Write summary at step 1750  Loss:  0.4619212746620178
+Write summary at step 1760  Loss:  0.3582944869995117
+Write summary at step 1770  Loss:  0.44156181812286377
+Write summary at step 1780  Loss:  0.48164644837379456
+Write summary at step 1790  Loss:  0.5482547283172607
+=================================================
+Epoch 30 End !
+=================================================
+Validation:
+ Loss: 3.1606593877077103 Acurracy:  4.125
+Write summary at step 2380  Loss:  0.4069954752922058
+Write summary at step 2390  Loss:  0.2806868851184845
+Write summary at step 2400  Loss:  0.43606555461883545
+Write summary at step 2410  Loss:  0.5552389025688171
+Write summary at step 2420  Loss:  0.45925039052963257
+Write summary at step 2430  Loss:  0.8263823390007019
+=================================================
+Epoch 41 End !
+=================================================
+Validation:
+ Loss: 2.3742847368121147 Acurracy:  4.65625
+Write summary at step 1800  Loss:  0.560674250125885
+Write summary at step 1810  Loss:  0.3261292576789856
+Write summary at step 1820  Loss:  0.5137740969657898
+Write summary at step 1830  Loss:  0.6573162078857422
+Write summary at step 1840  Loss:  0.6386116147041321
+Write summary at step 1850  Loss:  0.638562023639679
+=================================================
+Epoch 31 End !
+=================================================
+Write summary at step 2440  Loss:  0.25860360264778137
+Write summary at step 2450  Loss:  0.9385465979576111
+Write summary at step 2460  Loss:  0.3270639479160309
+Write summary at step 2470  Loss:  0.4969457983970642
+Write summary at step 2480  Loss:  0.7913058996200562
+Write summary at step 2490  Loss:  0.5875999331474304
+=================================================
+Epoch 42 End !
+=================================================
+Validation:
+ Loss: 3.101644814014435 Acurracy:  4.25
+Validation:
+ Loss: 2.272623710334301 Acurracy:  4.625
+Write summary at step 2500  Loss:  0.4885730445384979
+Saved checkpoint to: ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/checkpoint_2500.pt
+Write summary at step 1860  Loss:  0.3729431927204132
+Write summary at step 1870  Loss:  0.24289333820343018
+Write summary at step 1880  Loss:  0.5031734704971313
+Write summary at step 1890  Loss:  0.48110681772232056
+Write summary at step 1900  Loss:  0.43213096261024475
+Write summary at step 1910  Loss:  0.5106698870658875
+=================================================
+Epoch 32 End !
+=================================================
+Validation:
+ Loss: 3.627858992666006 Acurracy:  4.46875
+Write summary at step 2510  Loss:  0.18602527678012848
+Write summary at step 2520  Loss:  0.6062114834785461
+Write summary at step 2530  Loss:  0.7174307703971863
+Write summary at step 2540  Loss:  0.6416845321655273
+Write summary at step 2550  Loss:  0.3279334008693695
+=================================================
+Epoch 43 End !
+=================================================
+Validation:
+ Loss: 3.5886667370796204 Acurracy:  3.78125
+Validation:
+ Loss: 2.4014289677143097 Acurracy:  4.59375
+Write summary at step 1920  Loss:  0.41035446524620056
+Write summary at step 1930  Loss:  0.4711694121360779
+Write summary at step 1940  Loss:  0.6929031014442444
+Write summary at step 1950  Loss:  0.7672879099845886
+Write summary at step 1960  Loss:  0.6622740626335144
+Write summary at step 1970  Loss:  0.9970709085464478
+=================================================
+Epoch 33 End !
+=================================================
+Write summary at step 2560  Loss:  0.49319589138031006
+Write summary at step 2570  Loss:  0.6332823038101196
+Write summary at step 2580  Loss:  0.3005099296569824
+Write summary at step 2590  Loss:  1.0251621007919312
+Write summary at step 2600  Loss:  0.4352174997329712
+Write summary at step 2610  Loss:  0.36407390236854553
+=================================================
+Epoch 44 End !
+=================================================
+Validation:
+ Loss: 3.898995116353035 Acurracy:  3.75
+Validation:
+ Loss: 4.40904246782884 Acurracy:  4.0
+Write summary at step 1980  Loss:  0.9672056436538696
+Write summary at step 1990  Loss:  0.7666414976119995
+Write summary at step 2000  Loss:  0.4792804718017578
+Saved checkpoint to: ../checkpoints/Paper-Experiments/exp3.2/spiraconv_v2/checkpoint_2000.pt
+Write summary at step 2620  Loss:  0.34902727603912354
+Write summary at step 2630  Loss:  0.41674596071243286
+Write summary at step 2640  Loss:  0.5105288028717041
+Write summary at step 2650  Loss:  0.3600768744945526
+Write summary at step 2660  Loss:  0.17326810956001282
+=================================================
+Epoch 45 End !
+=================================================
+Validation:
+ Loss: 3.542130634188652 Acurracy:  3.75
+Write summary at step 2010  Loss:  0.7821741104125977
+Write summary at step 2020  Loss:  0.5917730331420898
+Write summary at step 2030  Loss:  0.6938257813453674
+=================================================
+Epoch 34 End !
+=================================================
+Validation:
+ Loss: 2.6634481586515903 Acurracy:  4.875
+Validation:
+ Loss: 3.2965352535247803 Acurracy:  4.375
+Write summary at step 2670  Loss:  0.21381275355815887
+Write summary at step 2680  Loss:  0.4693807065486908
+Write summary at step 2690  Loss:  0.5044392347335815
+Write summary at step 2700  Loss:  0.6179121732711792
+Write summary at step 2710  Loss:  0.3317384123802185
+Write summary at step 2720  Loss:  0.6337785124778748
+=================================================
+Epoch 46 End !
+=================================================
+Validation:
+ Loss: 1.4752048067748547 Acurracy:  5.25
+
+ > BEST MODEL (1.47520) : ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/best_checkpoint.pt
+Write summary at step 2040  Loss:  0.5163185596466064
+Write summary at step 2050  Loss:  0.645332396030426
+Write summary at step 2060  Loss:  0.42255374789237976
+Write summary at step 2070  Loss:  0.8174406886100769
+Write summary at step 2080  Loss:  0.778412938117981
+=================================================
+Epoch 35 End !
+=================================================
+Validation:
+ Loss: 2.994600385427475 Acurracy:  4.3125
+Write summary at step 2730  Loss:  0.2305012345314026
+Write summary at step 2740  Loss:  0.3106056749820709
+Write summary at step 2750  Loss:  0.28957775235176086
+Write summary at step 2760  Loss:  0.38839736580848694
+Write summary at step 2770  Loss:  0.3294898569583893
+Write summary at step 2780  Loss:  0.4276990592479706
+=================================================
+Epoch 47 End !
+=================================================
+Validation:
+ Loss: 3.383083762601018 Acurracy:  4.21875
+Write summary at step 2090  Loss:  0.6354148387908936
+Write summary at step 2100  Loss:  0.545940637588501
+Write summary at step 2110  Loss:  0.46654847264289856
+Write summary at step 2120  Loss:  0.5182353258132935
+Write summary at step 2130  Loss:  0.41513052582740784
+Write summary at step 2140  Loss:  0.3445831537246704
+=================================================
+Epoch 36 End !
+=================================================
+Validation:
+ Loss: 3.036595731973648 Acurracy:  4.25
+Write summary at step 2790  Loss:  0.525934636592865
+Write summary at step 2800  Loss:  0.30990490317344666
+Write summary at step 2810  Loss:  0.24001465737819672
+Write summary at step 2820  Loss:  0.6571140289306641
+Write summary at step 2830  Loss:  0.14831028878688812
+Write summary at step 2840  Loss:  0.24315418303012848
+=================================================
+Epoch 48 End !
+=================================================
+Validation:
+ Loss: 2.333676178008318 Acurracy:  5.0
+Write summary at step 2150  Loss:  0.42141193151474
+Write summary at step 2160  Loss:  1.1336779594421387
+Write summary at step 2170  Loss:  0.4378231167793274
+Write summary at step 2180  Loss:  0.5418796539306641
+Write summary at step 2190  Loss:  0.5657340884208679
+Write summary at step 2200  Loss:  0.47392553091049194
+=================================================
+Epoch 37 End !
+=================================================
+Validation:
+ Loss: 2.95298208296299 Acurracy:  4.53125
+Write summary at step 2850  Loss:  0.46684008836746216
+Write summary at step 2860  Loss:  0.8439863324165344
+Write summary at step 2870  Loss:  0.4131324291229248
+Write summary at step 2880  Loss:  0.3601022958755493
+Write summary at step 2890  Loss:  0.23136749863624573
+Write summary at step 2900  Loss:  0.2690788507461548
+=================================================
+Epoch 49 End !
+=================================================
+Validation:
+ Loss: 3.412979856133461 Acurracy:  4.625
+Write summary at step 2210  Loss:  0.5026630759239197
+Write summary at step 2220  Loss:  0.5646586418151855
+Write summary at step 2230  Loss:  0.5930088758468628
+Write summary at step 2240  Loss:  0.7469111084938049
+Write summary at step 2250  Loss:  0.45988044142723083
+Write summary at step 2260  Loss:  0.7036051154136658
+=================================================
+Epoch 38 End !
+=================================================
+Validation:
+ Loss: 3.0008962899446487 Acurracy:  4.34375
+Write summary at step 2910  Loss:  0.2906104028224945
+Write summary at step 2920  Loss:  0.39896759390830994
+Write summary at step 2930  Loss:  0.6938180327415466
+Write summary at step 2940  Loss:  0.5144503116607666
+Write summary at step 2950  Loss:  0.5508828163146973
+=================================================
+Epoch 50 End !
+=================================================
+Validation:
+ Loss: 2.3349412058014423 Acurracy:  4.875
+Write summary at step 2270  Loss:  0.6687387824058533
+Write summary at step 2280  Loss:  0.49981769919395447
+Write summary at step 2290  Loss:  0.9660201072692871
+Write summary at step 2300  Loss:  0.4165318012237549
+Write summary at step 2310  Loss:  0.9670765399932861
+Write summary at step 2320  Loss:  0.9330328702926636
+=================================================
+Epoch 39 End !
+=================================================
+Write summary at step 2960  Loss:  0.4388827681541443
+Write summary at step 2970  Loss:  0.0993046909570694
+Write summary at step 2980  Loss:  0.26872706413269043
+Write summary at step 2990  Loss:  0.2329024225473404
+Write summary at step 3000  Loss:  0.4471992552280426
+Saved checkpoint to: ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/checkpoint_3000.pt
+Validation:
+ Loss: 3.302767127752304 Acurracy:  4.125
+Validation:
+ Loss: 2.7607190934941173 Acurracy:  4.625
+Write summary at step 3010  Loss:  0.3622518479824066
+=================================================
+Epoch 51 End !
+=================================================
+Validation:
+ Loss: 2.324512243270874 Acurracy:  4.6875
+Write summary at step 2330  Loss:  0.8598518371582031
+Write summary at step 2340  Loss:  0.6217840313911438
+Write summary at step 2350  Loss:  0.7598534822463989
+Write summary at step 2360  Loss:  0.44331595301628113
+Write summary at step 2370  Loss:  0.5151209235191345
+=================================================
+Epoch 40 End !
+=================================================
+Validation:
+ Loss: 3.196724995970726 Acurracy:  4.15625
+Write summary at step 3020  Loss:  0.24023687839508057
+Write summary at step 3030  Loss:  0.36359140276908875
+Write summary at step 3040  Loss:  0.25672024488449097
+Write summary at step 3050  Loss:  0.42917364835739136
+Write summary at step 3060  Loss:  0.5107545852661133
+Write summary at step 3070  Loss:  0.5813949704170227
+=================================================
+Epoch 52 End !
+=================================================
+Validation:
+ Loss: 3.102455658838153 Acurracy:  4.09375
+Write summary at step 2380  Loss:  0.5965068936347961
+Write summary at step 2390  Loss:  0.36929577589035034
+Write summary at step 2400  Loss:  0.6931169033050537
+Write summary at step 2410  Loss:  0.6130915284156799
+Write summary at step 2420  Loss:  0.5481576919555664
+Write summary at step 2430  Loss:  0.7202709913253784
+=================================================
+Epoch 41 End !
+=================================================
+Write summary at step 3080  Loss:  0.5211406946182251
+Write summary at step 3090  Loss:  0.18906466662883759
+Write summary at step 3100  Loss:  0.28820502758026123
+Write summary at step 3110  Loss:  0.22656793892383575
+Write summary at step 3120  Loss:  0.3583380877971649
+Write summary at step 3130  Loss:  0.28903964161872864
+=================================================
+Epoch 53 End !
+=================================================
+Validation:
+ Loss: 3.338356703519821 Acurracy:  4.09375
+Validation:
+ Loss: 2.3438210785388947 Acurracy:  4.84375
+Write summary at step 2440  Loss:  0.2507771849632263
+Write summary at step 2450  Loss:  0.40601879358291626
+Write summary at step 2460  Loss:  0.5293869376182556
+Write summary at step 2470  Loss:  0.40222564339637756
+Write summary at step 2480  Loss:  0.44060996174812317
+Write summary at step 2490  Loss:  0.7728350758552551
+=================================================
+Epoch 42 End !
+=================================================
+Write summary at step 3140  Loss:  0.26144659519195557
+Write summary at step 3150  Loss:  0.5025379657745361
+Write summary at step 3160  Loss:  0.38790154457092285
+Write summary at step 3170  Loss:  0.18974192440509796
+Write summary at step 3180  Loss:  0.30055734515190125
+Write summary at step 3190  Loss:  0.3083062767982483
+=================================================
+Epoch 54 End !
+=================================================
+Validation:
+ Loss: 2.9481471478939056 Acurracy:  4.25
+Validation:
+ Loss: 3.1206464618444443 Acurracy:  4.46875
+Write summary at step 2500  Loss:  0.7090835571289062
+Saved checkpoint to: ../checkpoints/Paper-Experiments/exp3.2/spiraconv_v2/checkpoint_2500.pt
+Write summary at step 3200  Loss:  0.3691863715648651
+Write summary at step 3210  Loss:  0.32643118500709534
+Write summary at step 3220  Loss:  0.384543240070343
+Write summary at step 3230  Loss:  0.3748171925544739
+Write summary at step 3240  Loss:  0.5962666273117065
+=================================================
+Epoch 55 End !
+=================================================
+Validation:
+ Loss: 3.2424513697624207 Acurracy:  3.875
+Write summary at step 2510  Loss:  0.5211004614830017
+Write summary at step 2520  Loss:  1.1124639511108398
+Write summary at step 2530  Loss:  0.7772586941719055
+Write summary at step 2540  Loss:  0.7408998608589172
+Write summary at step 2550  Loss:  0.48074623942375183
+=================================================
+Epoch 43 End !
+=================================================
+Validation:
+ Loss: 2.7368127345107496 Acurracy:  4.6875
+Validation:
+ Loss: 3.093688055872917 Acurracy:  4.28125
+Write summary at step 3250  Loss:  0.4916686415672302
+Write summary at step 3260  Loss:  0.17979858815670013
+Write summary at step 3270  Loss:  0.2024800330400467
+Write summary at step 3280  Loss:  0.49696439504623413
+Write summary at step 3290  Loss:  0.3760652542114258
+Write summary at step 3300  Loss:  0.24859096109867096
+=================================================
+Epoch 56 End !
+=================================================
+Validation:
+ Loss: 2.485252223908901 Acurracy:  4.5
+Write summary at step 2560  Loss:  0.4671286642551422
+Write summary at step 2570  Loss:  0.5535682439804077
+Write summary at step 2580  Loss:  0.7116764783859253
+Write summary at step 2590  Loss:  1.1732330322265625
+Write summary at step 2600  Loss:  0.6524980068206787
+Write summary at step 2610  Loss:  0.5369897484779358
+=================================================
+Epoch 44 End !
+=================================================
+Validation:
+ Loss: 2.941095270216465 Acurracy:  4.3125
+Write summary at step 3310  Loss:  0.47476744651794434
+Write summary at step 3320  Loss:  0.7558375000953674
+Write summary at step 3330  Loss:  0.30519741773605347
+Write summary at step 3340  Loss:  0.5252647995948792
+Write summary at step 3350  Loss:  0.6990659832954407
+Write summary at step 3360  Loss:  0.142417311668396
+=================================================
+Epoch 57 End !
+=================================================
+Validation:
+ Loss: 2.7370207756757736 Acurracy:  4.65625
+Write summary at step 2620  Loss:  0.4129490554332733
+Write summary at step 2630  Loss:  0.5577081441879272
+Write summary at step 2640  Loss:  0.787539005279541
+Write summary at step 2650  Loss:  0.5665314793586731
+Write summary at step 2660  Loss:  0.4834152162075043
+=================================================
+Epoch 45 End !
+=================================================
+Validation:
+ Loss: 3.1847690790891647 Acurracy:  4.09375
+Write summary at step 3370  Loss:  0.31579384207725525
+Write summary at step 3380  Loss:  0.4873274266719818
+Write summary at step 3390  Loss:  0.44358429312705994
+Write summary at step 3400  Loss:  0.6089234352111816
+Write summary at step 3410  Loss:  0.2677893340587616
+Write summary at step 3420  Loss:  0.3526749014854431
+=================================================
+Epoch 58 End !
+=================================================
+Validation:
+ Loss: 3.0669299513101578 Acurracy:  4.46875
+Write summary at step 2670  Loss:  0.24900707602500916
+Write summary at step 2680  Loss:  0.3608355224132538
+Write summary at step 2690  Loss:  0.7585726976394653
+Write summary at step 2700  Loss:  0.5373286008834839
+Write summary at step 2710  Loss:  0.6123020052909851
+Write summary at step 2720  Loss:  0.5110895037651062
+=================================================
+Epoch 46 End !
+=================================================
+Validation:
+ Loss: 3.3085798919200897 Acurracy:  4.03125
+Write summary at step 3430  Loss:  0.6158433556556702
+Write summary at step 3440  Loss:  0.5886141061782837
+Write summary at step 3450  Loss:  0.3858531713485718
+Write summary at step 3460  Loss:  0.6673318147659302
+Write summary at step 3470  Loss:  0.5870144367218018
+Write summary at step 3480  Loss:  0.5492869019508362
+=================================================
+Epoch 59 End !
+=================================================
+Validation:
+ Loss: 2.0790500305593014 Acurracy:  4.875
+Write summary at step 3490  Loss:  0.49260374903678894
+Write summary at step 3500  Loss:  0.4221039116382599
+Saved checkpoint to: ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/checkpoint_3500.pt
+Write summary at step 2730  Loss:  0.4574313163757324
+Write summary at step 2740  Loss:  0.7351383566856384
+Write summary at step 2750  Loss:  0.7733199000358582
+Write summary at step 2760  Loss:  0.5292142629623413
+Write summary at step 2770  Loss:  0.40127357840538025
+Write summary at step 2780  Loss:  0.8673204779624939
+=================================================
+Epoch 47 End !
+=================================================
+Validation:
+ Loss: 2.887891598045826 Acurracy:  4.46875
+Validation:
+ Loss: 2.1729620061814785 Acurracy:  4.875
+Write summary at step 3510  Loss:  0.28793150186538696
+Write summary at step 3520  Loss:  0.6299489140510559
+Write summary at step 3530  Loss:  0.47449901700019836
+=================================================
+Epoch 60 End !
+=================================================
+Validation:
+ Loss: 2.438034914433956 Acurracy:  4.46875
