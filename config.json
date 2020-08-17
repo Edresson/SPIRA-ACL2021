@@ -2,7 +2,12 @@
     "model_name":"spiraconv_v2", // spiraconv_v1 and spiraconv_v2
     "seed":42,
     "dataset":{
-        "padding_with_max_lenght": true,// if true, the timestep axis will be padded with the longest sequence, else, the timestep will be dynamic and the network will predict a vector of the size of the timestep on the output (if you use convulsions it can decrease)
+        "split_wav":{ // use the overlapping technique, in which the window was shifted "step" second each time and an instance was extracted during the total audio duration
+            "split_wav_using_overlapping": false, // if true use the overlapping technique, in which the window was shifted "step" second each time and an instance was extracted during the total audio duration
+            "window_len": 5, // windows len in seconds for overlapping technique
+            "step": 1 // step len in seconds for overlapping technique
+        },
+        "padding_with_max_lenght": false,// if true, the timestep axis will be padded with the longest sequence, else, the timestep will be dynamic and the network will predict a vector of the size of the timestep on the output (if you use convulsions it can decrease)
         "max_seq_len": null, // the data loader set automatically this value and save in train_config['logs_path']/config.json. its is max time dimension value in your train dataset. For convert this value to seconds use: value*hop_length/sample_rate
         // train dataset
         "train_csv":"../SPIRA_Dataset_V1/metadata_train.csv", // format path_wav, class

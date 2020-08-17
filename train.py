@@ -24,7 +24,7 @@ from models.spiraconv import SpiraConvV1, SpiraConvV2
 from utils.audio_processor import AudioProcessor 
 
 def validation(criterion, ap, model, c, testloader, tensorboard, step,  cuda):
-    padding_with_max_lenght = c.dataset['padding_with_max_lenght']
+    padding_with_max_lenght = c.dataset['padding_with_max_lenght'] or c.dataset['split_wav_using_overlapping']
     model.zero_grad()
     model.eval()
     loss = 0 
@@ -54,7 +54,7 @@ def validation(criterion, ap, model, c, testloader, tensorboard, step,  cuda):
     return mean_loss
 
 def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, c, model_name, ap, cuda=True):
-    padding_with_max_lenght = c.dataset['padding_with_max_lenght']
+    padding_with_max_lenght = c.dataset['padding_with_max_lenght'] or c.dataset['split_wav_using_overlapping']
     if(model_name == 'spiraconv_v1'):
         model = SpiraConvV1(c)
     elif (model_name == 'spiraconv_v2'):

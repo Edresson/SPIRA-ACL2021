@@ -38,13 +38,13 @@
         "batch_size": 5,
         "seed": 42,
         "num_workers": 14,
-        "logs_path": "../checkpoints/Paper-Experiments/exp1.1/",
+        "logs_path": "../checkpoints/Paper-Experiments/exp2.1/",
         "reinit_layers": null,
         "summary_interval": 10,
         "checkpoint_interval": 500
     },
     "data_aumentation":{
-        "insert_noise": false, // disable/enable noise insertion
+        "insert_noise": true, // disable/enable noise insertion
         "num_noise_control": 1, // number of diferents noise samples applied in control files 
         "num_noise_patient": 0, // number of diferents noise samples applied in patient files ! we recomend num_noise_control - 1
         // You need set this values, its the maximum and minimum values for noise patients intervals.  You need to cut out the noise in several patient files and calculate the maximum maximum amplitude and the minimum maximum amplitude. An example script to get these values is available at: get_max_amp_using_noise_samples.py

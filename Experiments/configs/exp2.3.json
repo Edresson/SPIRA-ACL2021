@@ -3,10 +3,10 @@
     "seed":42,
     "dataset":{
         // use the overlapping technique, in which the window was shifted "step" second each time and an instance was extracted during the total audio duration
-        "split_wav_using_overlapping": false, // if true use the overlapping technique, in which the window was shifted "step" second each time and an instance was extracted during the total audio duration
-        "window_len": 5, // windows len in seconds for overlapping technique
+        "split_wav_using_overlapping": true, // if true use the overlapping technique, in which the window was shifted "step" second each time and an instance was extracted during the total audio duration
+        "window_len": 4, // windows len in seconds for overlapping technique
         "step": 1, // step len in seconds for overlapping technique
-        "padding_with_max_lenght": true,// if true, the timestep axis will be padded with the longest sequence, else, the timestep will be dynamic and the network will predict a vector of the size of the timestep on the output (if you use convulsions it can decrease)
+        "padding_with_max_lenght": false,// if true, the timestep axis will be padded with the longest sequence, else, the timestep will be dynamic and the network will predict a vector of the size of the timestep on the output (if you use convulsions it can decrease)
         "max_seq_len": null, // the data loader set automatically this value and save in train_config['logs_path']/config.json. its is max time dimension value in your train dataset. For convert this value to seconds use: value*hop_length/sample_rate
         // train dataset
         "train_csv":"../SPIRA_Dataset_V2/metadata_train.csv", // format path_wav, class
@@ -38,13 +38,13 @@
         "batch_size": 5,
         "seed": 42,
         "num_workers": 14,
-        "logs_path": "../checkpoints/Paper-Experiments/exp1.1/",
+        "logs_path": "../checkpoints/Paper-Experiments/exp2.3/",
         "reinit_layers": null,
         "summary_interval": 10,
         "checkpoint_interval": 500
     },
     "data_aumentation":{
-        "insert_noise": false, // disable/enable noise insertion
+        "insert_noise": true, // disable/enable noise insertion
         "num_noise_control": 1, // number of diferents noise samples applied in control files 
         "num_noise_patient": 0, // number of diferents noise samples applied in patient files ! we recomend num_noise_control - 1
         // You need set this values, its the maximum and minimum values for noise patients intervals.  You need to cut out the noise in several patient files and calculate the maximum maximum amplitude and the minimum maximum amplitude. An example script to get these values is available at: get_max_amp_using_noise_samples.py
