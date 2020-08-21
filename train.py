@@ -112,6 +112,9 @@ def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, 
 
     best_loss = float('inf')
 
+    # early stop definitions
+    early_epochs = 0
+
     model.train()
     for epoch in range(c.train_config['epochs']):
         for feature, target in trainloader:
@@ -156,27 +159,36 @@ def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, 
                     print("Saved checkpoint to: %s" % save_path)
                     # run validation and save best checkpoint
                     val_loss = validation(eval_criterion, ap, model, c, testloader, tensorboard, step,  cuda=cuda)
-                    best_loss = save_best_checkpoint(log_dir, model, optimizer, c, step, val_loss, best_loss)
+                    best_loss, _ = save_best_checkpoint(log_dir, model, optimizer, c, step, val_loss, best_loss, early_epochs if c.train_config['early_stop_epochs'] != 0 else None)
         
         print('=================================================')
         print("Epoch %d End !"%epoch)
         print('=================================================')
         # run validation and save best checkpoint at end epoch
         val_loss = validation(eval_criterion, ap, model, c, testloader, tensorboard, step,  cuda=cuda)
-        best_loss = save_best_checkpoint(log_dir, model, optimizer, c, step, val_loss, best_loss)
-
+        best_loss, early_epochs = save_best_checkpoint(log_dir, model, optimizer, c, step, val_loss, best_loss,  early_epochs if c.train_config['early_stop_epochs'] != 0 else None)
+        if c.train_config['early_stop_epochs'] != 0:
+            if early_epochs is not None:
+                if early_epochs >= c.train_config['early_stop_epochs']:
+                    break # stop train
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-c', '--config_path', type=str, required=True,
                         help="json file with configurations")
     parser.add_argument('--checkpoint_path', type=str, default=None,
                         help="path of checkpoint pt file, for continue training")
+    parser.add_argument('-s', '--seed', type=int, default=None,
+                        help="Seed for training")
     args = parser.parse_args()
 
     c = load_config(args.config_path)
     ap = AudioProcessor(**c.audio)
+    if args.seed is None:
+        log_path = os.path.join(c.train_config['logs_path'], c.model_name)
+    else:
+        log_path = os.path.join(os.path.join(c.train_config['logs_path'], str(args.seed)), c.model_name)
+        c.train_config['seed'] = args.seed
 
-    log_path = os.path.join(c.train_config['logs_path'], c.model_name)
     os.makedirs(log_path, exist_ok=True)
 
     tensorboard = TensorboardWriter(os.path.join(log_path,'tensorboard'))
@@ -184,7 +196,7 @@ if __name__ == '__main__':
     train_dataloader = train_dataloader(c, ap)
     max_seq_len = train_dataloader.dataset.get_max_seq_lenght()
     c.dataset['max_seq_len'] = max_seq_len
-
+    
     # save config in train dir, its necessary for test before train and reproducity
     save_config_file(c, os.path.join(log_path,'config.json'))
 

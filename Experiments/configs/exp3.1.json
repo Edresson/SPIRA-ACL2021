@@ -38,7 +38,7 @@
         "batch_size": 5,
         "seed": 42,
         "num_workers": 14,
-        "logs_path": "../checkpoints/Paper-Experiments/exp3.1/",
+        "logs_path": "../checkpoints/Paper-Experiments/seeds/exp3.1/",
         "reinit_layers": null,
         "summary_interval": 10,
         "checkpoint_interval": 500

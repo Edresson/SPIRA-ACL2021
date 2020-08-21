@@ -141,9 +141,11 @@ def binary_acc(y_pred, y):
     return acc.item()
 
 
-def save_best_checkpoint(log_dir, model, optimizer, c, step, val_loss, best_loss):
+def save_best_checkpoint(log_dir, model, optimizer, c, step, val_loss, best_loss, early_epochs=None):
     if val_loss < best_loss:
         best_loss = val_loss
+        if early_epochs is not None:
+            early_epochs = 0
         save_path = os.path.join(log_dir, 'best_checkpoint.pt')
         torch.save({
             'model': model.state_dict(),
@@ -153,5 +155,7 @@ def save_best_checkpoint(log_dir, model, optimizer, c, step, val_loss, best_loss
         }, save_path)
         print("\n > BEST MODEL ({0:.5f}) : {1:}".format(
             val_loss, save_path))
-
-    return best_loss
+    else:
+        if early_epochs is not None:
+            early_epochs += 1
+    return best_loss, early_epochs

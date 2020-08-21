@@ -337,3 +337,352 @@ All        48  60  108
 Test
  Loss: 0.2954357437513493 Acurracy:  0.8703703703703703
 =========================================================
+
+==================== Experiment 3.1 ====================
+____________________EVALUATION____________________
+without noise:
+Insert noise ? False
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          16   0   16
+1           4  12   16
+All        20  12   32
+Test
+ Loss: 0.33627374609932303 Acurracy:  0.875
+with noise:
+Insert noise ? True
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0           8   8   16
+1           4  12   16
+All        12  20   32
+Test
+ Loss: 0.7864377158693969 Acurracy:  0.625
+____________________TESTE____________________
+Insert noise ? False
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          54   0   54
+1          20  34   54
+All        74  34  108
+Test
+ Loss: 0.38350019195220536 Acurracy:  0.8148148148148148
+Insert noise ? True
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.1/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          41  13   54
+1          20  34   54
+All        61  47  108
+Test
+ Loss: 0.6205643018086752 Acurracy:  0.6944444444444444
+=========================================================
+==================== Experiment 3.2 ====================
+____________________EVALUATION____________________
+without noise:
+Insert noise ? False
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.2/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          14   2   16
+1           5  11   16
+All        19  13   32
+Test
+ Loss: 0.3524833957199007 Acurracy:  0.78125
+with noise:
+Insert noise ? True
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.2/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          13   3   16
+1           5  11   16
+All        18  14   32
+Test
+ Loss: 0.34934169449843466 Acurracy:  0.75
+____________________TESTE____________________
+Insert noise ? False
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.2/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          44  10   54
+1           6  48   54
+All        50  58  108
+Test
+ Loss: 0.331913689772288 Acurracy:  0.8518518518518519
+Insert noise ? True
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.2/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          44  10   54
+1           6  48   54
+All        50  58  108
+Test
+ Loss: 0.3581310311953227 Acurracy:  0.8518518518518519
+=========================================================
+==================== Experiment 3.3 ====================
+____________________EVALUATION____________________
+without noise:
+Insert noise ? False
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.3/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          15   1   16
+1           3  13   16
+All        18  14   32
+Test
+ Loss: 0.2956571807153523 Acurracy:  0.875
+with noise:
+Insert noise ? True
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.3/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          13   3   16
+1           3  13   16
+All        16  16   32
+Test
+ Loss: 0.4592820485122502 Acurracy:  0.8125
+____________________TESTE____________________
+Insert noise ? False
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.3/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          54   0   54
+1          13  41   54
+All        67  41  108
+Test
+ Loss: 0.29693398707442814 Acurracy:  0.8796296296296297
+Insert noise ? True
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.3/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          50   4   54
+1          13  41   54
+All        63  45  108
+Test
+ Loss: 0.3858150674237145 Acurracy:  0.8425925925925926
+=========================================================
+==================== Experiment 3.4 ====================
+____________________EVALUATION____________________
+without noise:
+Insert noise ? False
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.4/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          13   3   16
+1           4  12   16
+All        17  15   32
+Test
+ Loss: 0.42619998776353896 Acurracy:  0.78125
+with noise:
+Insert noise ? True
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.4/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          14   2   16
+1           4  12   16
+All        18  14   32
+Test
+ Loss: 0.33849830948747694 Acurracy:  0.8125
+____________________TESTE____________________
+Insert noise ? False
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.4/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          34  20   54
+1           8  46   54
+All        42  66  108
+Test
+ Loss: 0.4646358887354533 Acurracy:  0.7407407407407407
+Insert noise ? True
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.4/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          46   8   54
+1           8  46   54
+All        54  54  108
+Test
+ Loss: 0.3648351254286589 Acurracy:  0.8518518518518519
+=========================================================
+==================== Experiment 3.5 ====================
+____________________EVALUATION____________________
+without noise:
+Insert noise ? False
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.5/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          15   1   16
+1           3  13   16
+All        18  14   32
+Test
+ Loss: 0.29956232546828687 Acurracy:  0.875
+with noise:
+Insert noise ? True
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.5/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          14   2   16
+1           3  13   16
+All        17  15   32
+Test
+ Loss: 0.4153788590338081 Acurracy:  0.84375
+____________________TESTE____________________
+Insert noise ? False
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.5/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          53   1   54
+1           7  47   54
+All        60  48  108
+Test
+ Loss: 0.29051185095751725 Acurracy:  0.9259259259259259
+Insert noise ? True
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.5/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          48   6   54
+1           7  47   54
+All        55  53  108
+Test
+ Loss: 0.3820191334795069 Acurracy:  0.8796296296296297
+=========================================================
+==================== Experiment 3.6 ====================
+____________________EVALUATION____________________
+without noise:
+Insert noise ? False
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.6/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted  0   1  All
+Target               
+0          2  14   16
+1          0  16   16
+All        2  30   32
+Test
+ Loss: 0.8297246465226635 Acurracy:  0.5625
+with noise:
+Insert noise ? True
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.6/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          12   4   16
+1           0  16   16
+All        12  20   32
+Test
+ Loss: 0.3436833465239033 Acurracy:  0.875
+____________________TESTE____________________
+Insert noise ? False
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.6/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted  0    1  All
+Target                
+0          6   48   54
+1          2   52   54
+All        8  100  108
+Test
+ Loss: 0.9083666271633573 Acurracy:  0.5370370370370371
+Insert noise ? True
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/exp3.6/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          32  22   54
+1           2  52   54
+All        34  74  108
+Test
+ Loss: 0.4684658094688698 Acurracy:  0.7777777777777778
+=========================================================
