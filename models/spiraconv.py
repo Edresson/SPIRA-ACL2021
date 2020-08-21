@@ -242,7 +242,7 @@ class SpiraConvV2(nn.Module):
         super(SpiraConvV2, self).__init__()
         self.config = config
         self.audio = self.config['audio']
-        self.padding_with_max_lenght = self.config.dataset['padding_with_max_lenght']
+        self.padding_with_max_lenght = self.config.dataset['padding_with_max_lenght'] or self.config.dataset['split_wav_using_overlapping']
         self.max_seq_len = self.config.dataset['max_seq_len']
         print("Model Inicialized With Feature %s "%self.config.audio['feature'])
         if self.config.audio['feature'] == 'spectrogram':

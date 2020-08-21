@@ -24,6 +24,12 @@ from utils.dataset import test_dataloader
 from models.spiraconv import SpiraConvV1, SpiraConvV2, UTF_SPIRA_ConvLSTM_v1, UTF_SPIRA_Conv_v1
 from utils.audio_processor import AudioProcessor 
 
+import random
+# set random seed
+random.seed(42)
+torch.manual_seed(42)
+torch.cuda.manual_seed(42)
+np.random.seed(42)
 def test(criterion, ap, model, c, testloader, step,  cuda, confusion_matrix=False):
     padding_with_max_lenght = c.dataset['padding_with_max_lenght']
     losses = []
@@ -35,19 +41,47 @@ def test(criterion, ap, model, c, testloader, step,  cuda, confusion_matrix=Fals
     preds = []
     targets = []
     with torch.no_grad():
-        for feature, target in testloader:       
+        for feature, target, slices, targets_org in testloader:       
             #try:
             if cuda:
                 feature = feature.cuda()
                 target = target.cuda()
-
             output = model(feature).float()
 
             # output = torch.round(output * 10**4) / (10**4)
 
             # Calculate loss
-            if not padding_with_max_lenght:
+            if not padding_with_max_lenght and not c.dataset['split_wav_using_overlapping']:
                 target = target[:, :output.shape[1],:target.shape[2]]
+            
+            if c.dataset['split_wav_using_overlapping']:
+                # unpack overlapping for calculation loss and accuracy 
+                if slices is not None and targets_org is not None:
+                    idx = 0
+                    new_output = []
+                    new_target = []
+                    for i in range(slices.size(0)):
+                        num_samples = int(slices[i].cpu().numpy())
+
+                        samples_output = output[idx:idx+num_samples]
+                        output_mean = samples_output.mean()
+                        samples_target = target[idx:idx+num_samples]
+                        target_mean = samples_target.mean()
+
+                        new_target.append(target_mean)
+                        new_output.append(output_mean)
+                        idx += num_samples
+
+                    target = torch.stack(new_target, dim=0)
+                    output = torch.stack(new_output, dim=0)
+                    #print(target, targets_org)
+                    if cuda:
+                        output = output.cuda()
+                        target = target.cuda()
+                        targets_org = targets_org.cuda()
+                    if not torch.equal(targets_org, target):
+                        raise RuntimeError("Integrity problem during the unpack of the overlay for the calculation of accuracy and loss. Check the dataloader !!")
+
             loss += criterion(output, target).item()
 
             # calculate binnary accuracy
@@ -108,7 +142,7 @@ def run_test(args, checkpoint_path, testloader, c, model_name, ap, cuda=True):
     # convert model from cuda
     if cuda:
         model = model.cuda()
-    
+
     model.train(False)
     test_acc = test(criterion, ap, model, c, testloader, step, cuda=cuda, confusion_matrix=True)
         
@@ -131,6 +165,10 @@ if __name__ == '__main__':
                         help="Number of Workers for test data load")
     parser.add_argument('--no_insert_noise', type=bool, default=False,
                         help=" No insert noise in test ?")
+    parser.add_argument('--num_noise_control', type=int, default=1,
+                        help="Number of Noise for insert in control")
+    parser.add_argument('--num_noise_patient', type=int, default=0,
+                        help="Number of Noise for insert in patient")
                         
     args = parser.parse_args()
 
@@ -141,6 +179,11 @@ if __name__ == '__main__':
         c.data_aumentation['insert_noise'] = True
     else:
         c.data_aumentation['insert_noise'] = False
+
+    # ste values for noisy insertion in test
+    c.data_aumentation["num_noise_control"] = args.num_noise_control
+    c.data_aumentation["num_noise_patient"] = args.num_noise_patient
+
     print("Insert noise ?", c.data_aumentation['insert_noise'])
 
     c.dataset['test_csv'] = args.test_csv
