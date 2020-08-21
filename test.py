@@ -4,32 +4,26 @@ import torch
 import torch.nn as nn
 import traceback
 import pandas as pd
-
 import time
 import numpy as np
-
 import argparse
-
 from utils.generic_utils import load_config, save_config_file
 from utils.generic_utils import set_init_dict
-
 from utils.generic_utils import NoamLR, binary_acc
-
 from utils.generic_utils import save_best_checkpoint
-
 from utils.tensorboard import TensorboardWriter
-
 from utils.dataset import test_dataloader
-
-from models.spiraconv import SpiraConvV1, SpiraConvV2, UTF_SPIRA_ConvLSTM_v1, UTF_SPIRA_Conv_v1
+from models.spiraconv import SpiraConvV1, SpiraConvV2, UTF_SPIRA_Conv_v1
+from model.spiraconvlstm import UTF_SPIRA_ConvLSTM_v1
 from utils.audio_processor import AudioProcessor 
-
 import random
+
 # set random seed
 random.seed(42)
 torch.manual_seed(42)
 torch.cuda.manual_seed(42)
 np.random.seed(42)
+
 def test(criterion, ap, model, c, testloader, step,  cuda, confusion_matrix=False):
     padding_with_max_lenght = c.dataset['padding_with_max_lenght']
     losses = []

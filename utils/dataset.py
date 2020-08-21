@@ -8,6 +8,7 @@ import random
 import torch.nn.functional as F
 from torch.nn.utils.rnn import pad_sequence
 import torchaudio
+
 class Dataset(Dataset):
     """
     Class for load a train and test from dataset generate by import_librispeech.py and others
@@ -24,25 +25,28 @@ class Dataset(Dataset):
         self.test = test
         self.dataset_csv = c.dataset['train_csv'] if train else c.dataset['eval_csv']
         self.dataset_root = c.dataset['train_data_root_path'] if train else c.dataset['eval_data_root_path']
+        
         if test:
             self.dataset_csv = c.dataset['test_csv']
             self.dataset_root = c.dataset['test_data_root_path']
+            
         self.noise_csv = c.dataset['noise_csv'] 
         self.noise_root = c.dataset['noise_data_root_path']
         assert os.path.isfile(self.dataset_csv),"Test or Train CSV file don't exists! Fix it in config.json"
         assert os.path.isfile(self.noise_csv),"Noise CSV file don't exists! Fix it in config.json"
-        assert (not self.c.dataset['padding_with_max_lenght'] and self.c.dataset['split_wav_using_overlapping']) or  (self.c.dataset['padding_with_max_lenght'] and not self.c.dataset['split_wav_using_overlapping']),"You cannot use the padding_with_max_length option in conjunction with the split_wav_using_overlapping option, disable one of them !!"
+        assert (not self.c.dataset['padding_with_max_lenght'] and self.c.dataset['split_wav']['split_wav_using_overlapping']) or  (self.c.dataset['padding_with_max_lenght'] and not self.c.dataset['split_wav']['split_wav_using_overlapping']),"You cannot use the padding_with_max_length option in conjunction with the split_wav_using_overlapping option, disable one of them !!"
 
         # read csvs
         self.dataset_list = pd.read_csv(self.dataset_csv, sep=',').values
         self.noise_list = pd.read_csv(self.noise_csv, sep=',').values
+        
         # noise config
         self.num_noise_files = len(self.noise_list)-1
         self.control_class = c.dataset['control_class']
         self.patient_class = c.dataset['patient_class']
 
         # get max seq lenght for padding 
-        if self.c.dataset['padding_with_max_lenght'] and train and not self.c.dataset['max_seq_len'] and not self.c.dataset['split_wav_using_overlapping']:
+        if self.c.dataset['padding_with_max_lenght'] and train and not self.c.dataset['max_seq_len'] and not self.c.dataset['split_wav']['split_wav_using_overlapping']:
             self.max_seq_len = 0
             min_seq = float('inf')
             for idx in range(len(self.dataset_list)):
@@ -56,7 +60,7 @@ class Dataset(Dataset):
             print("The Max Time dim Lenght is: {} (+- {} seconds)".format(self.max_seq_len, ( self.max_seq_len*self.c.audio['hop_length'])/self.ap.sample_rate))
             print("The Min Time dim Lenght is: {} (+- {} seconds)".format(min_seq, (min_seq*self.c.audio['hop_length'])/self.ap.sample_rate))
 
-        elif self.c.dataset['split_wav_using_overlapping']:
+        elif self.c.dataset['split_wav']['split_wav_using_overlapping']:
             # set max len for window_len seconds multiply by sample_rate and divide by hop_lenght
             self.max_seq_len = int(((self.c.dataset['window_len']*self.ap.sample_rate)/c.audio['hop_length'])+1)
             print("The Max Time dim Lenght is: ", self.max_seq_len, "It's use overlapping technique, window:", self.c.dataset['window_len'], "step:", self.c.dataset['step'])
@@ -118,7 +122,7 @@ class Dataset(Dataset):
                     wav = wav + noise_wav
                 
                 #torchaudio.save('depois_patient.wav', wav, self.ap.sample_rate)
-        if self.c.dataset['split_wav_using_overlapping']:
+        if self.c.dataset['split_wav']['split_wav_using_overlapping']:
             #print("Wav len:", wav.shape[1])
             #print("for",self.ap.sample_rate*self.c.dataset['window_len'], wav.shape[1], self.ap.sample_rate*self.c.dataset['step'])
             start_slice = 0
@@ -178,16 +182,10 @@ def eval_dataloader(c, ap, max_seq_len=None):
                       collate_fn=own_collate_fn, batch_size=c.test_config['batch_size'],
                       shuffle=False, num_workers=c.test_config['num_workers'])
 
-
 def test_dataloader(c, ap, max_seq_len=None):
     return DataLoader(dataset=Dataset(c, ap, train=False, test=True, max_seq_len=max_seq_len),
-<<<<<<< HEAD
-                      collate_fn=own_collate_fn, batch_size=c.test_config['batch_size'],
-                      shuffle=False, num_workers=c.test_config['num_workers'])
-=======
-                          collate_fn=teste_collate_fn, batch_size=c.test_config['batch_size'], 
-                          shuffle=False, num_workers=c.test_config['num_workers'])
->>>>>>> e0a7b68e09d5ebb337bafc6017ef1b6df0e90e49
+                     collate_fn=teste_collate_fn, batch_size=c.test_config['batch_size'], 
+                     shuffle=False, num_workers=c.test_config['num_workers'])
 
 def own_collate_fn(batch):
     features = []

@@ -20,7 +20,8 @@ from utils.tensorboard import TensorboardWriter
 
 from utils.dataset import train_dataloader, eval_dataloader
 
-from models.spiraconv import SpiraConvV1, SpiraConvV2, UTF_SPIRA_ConvLSTM_v1, UTF_SPIRA_Conv_v1
+from models.spiraconv import SpiraConvV1, SpiraConvV2, UTF_SPIRA_Conv_v1
+from models.spiraconvlstm import UTF_SPIRA_ConvLSTM_v1
 from utils.audio_processor import AudioProcessor 
 
 def validation(criterion, ap, model, c, testloader, tensorboard, step,  cuda):
