@@ -14,7 +14,7 @@ from utils.generic_utils import save_best_checkpoint
 from utils.tensorboard import TensorboardWriter
 from utils.dataset import test_dataloader
 from models.spiraconv import SpiraConvV1, SpiraConvV2, UTF_SPIRA_Conv_v1
-from model.spiraconvlstm import UTF_SPIRA_ConvLSTM_v1
+from models.spiraconvlstm import UTF_SPIRA_ConvLSTM_v1
 from utils.audio_processor import AudioProcessor 
 import random
 
