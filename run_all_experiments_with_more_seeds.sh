@@ -26,8 +26,8 @@ do
 done
 
 
-seed_s=43
-seed_e=44
+seed_s=42
+seed_e=46
 for i in $(seq $seed_s 1 $seed_e)
 do
   parallel python train.py -c Experiments/configs/exp1.1.json -s $i
