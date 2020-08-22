@@ -19,8 +19,15 @@ function parallel {
   fi
 }
 
-seed_s=42
-seed_e=46
+PID=13561
+while [ -e /proc/$PID ]
+do
+    sleep .6
+done
+
+
+seed_s=43
+seed_e=44
 for i in $(seq $seed_s 1 $seed_e)
 do
   parallel python train.py -c Experiments/configs/exp1.1.json -s $i
