@@ -30,9 +30,9 @@
         "fc2_dim":1
     },
     "train_config": {
-        "early_stop_epochs": 20, // if 0 disable else if the model does not improve after "early_stop_epochs" epochs, training is stopped
+        "early_stop_epochs": 40, // if 0 disable else if the model does not improve after "early_stop_epochs" epochs, training is stopped
         "lr_decay": true, // activate/desactivate Noam Learning Rate Decay Scheme    
-        "warmup_steps": 1000, //default 4000, Noam decay steps to increase the learning rate from 0 to "lr"
+        "warmup_steps": 500, //default 4000, Noam decay steps to increase the learning rate from 0 to "lr"
         "epochs": 1000,
         "learning_rate": 1e-3, // Initial learning rate. If Noam decay is active, maximum learning rate.
         "weight_decay": 0.01,  // Weight decay rate for optimizer

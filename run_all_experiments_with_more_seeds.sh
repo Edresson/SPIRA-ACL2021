@@ -26,28 +26,28 @@ do
 done
 
 
-seed_s=42
-seed_e=46
+seed_s=43
+seed_e=43
 for i in $(seq $seed_s 1 $seed_e)
 do
-  parallel python train.py -c Experiments/configs/exp1.1.json -s $i
-  parallel python train.py -c Experiments/configs/exp1.2.json -s $i
-  parallel python train.py -c Experiments/configs/exp1.3.json -s $i
-  parallel python train.py -c Experiments/configs/exp2.1.json -s $i
-  parallel python train.py -c Experiments/configs/exp2.2.json -s $i
-  parallel python train.py -c Experiments/configs/exp2.3.json -s $i
+  # parallel python train.py -c Experiments/configs/exp1.1.json -s $i
+  # parallel python train.py -c Experiments/configs/exp1.2.json -s $i
+  # parallel python train.py -c Experiments/configs/exp1.3.json -s $i
+  # parallel python train.py -c Experiments/configs/exp2.1.json -s $i
+  # parallel python train.py -c Experiments/configs/exp2.2.json -s $i
+  # parallel python train.py -c Experiments/configs/exp2.3.json -s $i
   parallel python train.py -c Experiments/configs/exp3.1.json -s $i
-  parallel python train.py -c Experiments/configs/exp3.2.json -s $i
-  parallel python train.py -c Experiments/configs/exp3.3.json -s $i
-  parallel python train.py -c Experiments/configs/exp3.4.json -s $i
-  parallel python train.py -c Experiments/configs/exp3.5.json -s $i
-  parallel python train.py -c Experiments/configs/exp3.6.json -s $i
-  parallel python train.py -c Experiments/configs/exp3.7.json -s $i
-  parallel python train.py -c Experiments/configs/exp3.8.json -s $i
-  parallel python train.py -c Experiments/configs/exp3.9.json -s $i
-  parallel python train.py -c Experiments/configs/exp3.10.json -s $i
-  parallel python train.py -c Experiments/configs/exp3.11.json -s $i
-  parallel python train.py -c Experiments/configs/exp3.12.json -s $i
+  # parallel python train.py -c Experiments/configs/exp3.2.json -s $i
+  # parallel python train.py -c Experiments/configs/exp3.3.json -s $i
+  # parallel python train.py -c Experiments/configs/exp3.4.json -s $i
+  # parallel python train.py -c Experiments/configs/exp3.5.json -s $i
+  # parallel python train.py -c Experiments/configs/exp3.6.json -s $i
+  # parallel python train.py -c Experiments/configs/exp3.7.json -s $i
+  # parallel python train.py -c Experiments/configs/exp3.8.json -s $i
+  # parallel python train.py -c Experiments/configs/exp3.9.json -s $i
+  # parallel python train.py -c Experiments/configs/exp3.10.json -s $i
+  # parallel python train.py -c Experiments/configs/exp3.11.json -s $i
+  # parallel python train.py -c Experiments/configs/exp3.12.json -s $i
 done
 
 wait
