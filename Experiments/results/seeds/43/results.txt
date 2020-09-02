@@ -338,6 +338,70 @@ All        47  61  108
 Test
  Loss: 0.3020088810611654 Acurracy:  0.8611111111111112
 =========================================================
+
+==================== Experiment 3.1 ====================
+____________________EVALUATION____________________
+without noise:
+
+
+Insert noise ? False
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/seeds/exp3.1/43/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          16   0   16
+1           4  12   16
+All        20  12   32
+Test
+ Loss: 0.3365588316228241 Acurracy:  0.875
+with noise:
+Insert noise ? True
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/seeds/exp3.1/43/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0           8   8   16
+1           4  12   16
+All        12  20   32
+Test
+ Loss: 0.7898019996937364 Acurracy:  0.625
+____________________TESTE____________________
+Insert noise ? False
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/seeds/exp3.1/43/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          54   0   54
+1          21  33   54
+All        75  33  108
+Test
+ Loss: 0.3965779164357594 Acurracy:  0.8055555555555556
+Insert noise ? True
+The Max Time dim Lenght is:  401 It's use overlapping technique, window: 4 step: 1
+Model Inicialized With Feature mfcc 
+Loading checkpoint: ../checkpoints/Paper-Experiments/seeds/exp3.1/43/spiraconv_v2/best_checkpoint.pt
+Model Sucessful Load !
+======== Confusion Matrix ==========
+Predicted   0   1  All
+Target                
+0          41  13   54
+1          21  33   54
+All        62  46  108
+Test
+ Loss: 0.6312311953968472 Acurracy:  0.6851851851851852
+=========================================================
+
+
+
 ==================== Experiment 3.2 ====================
 ____________________EVALUATION____________________
 without noise:

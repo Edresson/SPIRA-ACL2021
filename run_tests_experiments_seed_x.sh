@@ -1,7 +1,7 @@
 
 << 'MULTILINE-COMMENT'
 
-MULTILINE-COMMENT
+
 echo "==================== Experiment 1.1 ===================="
 # evaluation
 
@@ -117,8 +117,8 @@ python test.py --test_csv ../SPIRA_Dataset_V2/metadata_test.csv -r ../SPIRA_Data
 
 echo "========================================================="
 
+MULTILINE-COMMENT
 
-<< 'MULTILINE-COMMENT'
 
 echo "==================== Experiment 3.1 ===================="
 # evaluation
@@ -138,7 +138,8 @@ python test.py --test_csv ../SPIRA_Dataset_V2/metadata_test.csv -r ../SPIRA_Data
 python test.py --test_csv ../SPIRA_Dataset_V2/metadata_test.csv -r ../SPIRA_Dataset_V2/ --checkpoint_path ../checkpoints/Paper-Experiments/seeds/exp3.1/43/spiraconv_v2/best_checkpoint.pt --config_path ../checkpoints/Paper-Experiments/seeds/exp3.1/43/spiraconv_v2/config.json  --batch_size 15 --num_workers 2 --num_noise_control 1 --num_noise_patient 0
 
 echo "========================================================="
-MULTILINE-COMMENT
+<< 'MULTILINE-COMMENT'
+
 echo "==================== Experiment 3.2 ===================="
 # evaluation
 
@@ -359,3 +360,4 @@ python test.py --test_csv ../SPIRA_Dataset_V2/metadata_test.csv -r ../SPIRA_Data
 python test.py --test_csv ../SPIRA_Dataset_V2/metadata_test.csv -r ../SPIRA_Dataset_V2/ --checkpoint_path ../checkpoints/Paper-Experiments/seeds/exp3.12/43/spiraconv_v2/best_checkpoint.pt --config_path ../checkpoints/Paper-Experiments/seeds/exp3.12/43/spiraconv_v2/config.json  --batch_size 15 --num_workers 2 --num_noise_control 1 --num_noise_patient 0
 
 echo "========================================================="
+MULTILINE-COMMENT
