@@ -1,5 +1,5 @@
 {
-    "model_name":"utf_convlstm_v1", // spiraconv_v1, spiraconv_v2, utf_convlstm_v1, utf_spira_conv_v1
+    "model_name":"spiraconv_v2", // spiraconv_v1, spiraconv_v2, utf_convlstm_v1, utf_spira_conv_v1
     "seed":42,
     "dataset":{
         "split_wav":{ // use the overlapping technique, in which the window was shifted "step" second each time and an instance was extracted during the total audio duration
@@ -61,7 +61,7 @@
         "num_workers": 10 // used on evaluation and test
     },
     "audio": {
-        "feature": "mfcc", // spectrogram or melspectrogram or mfcc
+        "feature": "hpcp", // spectrogram or melspectrogram or mfcc or hpcp
         // wave load paramers
         "sample_rate": 16000,
         "normalize": true, // if true, then output is divided by 1 << 31 (assumes signed 32-bit audio), and normalizes to [-1, 1]. If number, then output is divided by that number If callable, then the output is passed as a parameter to the given function, then the output is divided by the result. 
@@ -75,6 +75,18 @@
         "num_mfcc": 40, // Number of mfc coefficients to retain 
         "log_mels": false, //  whether to use log-mel spectrograms instead of db-scaled.
 
+        // hpcp parameters
+        "f_min": 100,
+        "f_max": 5000,
+        "global_thr": 80,  // in dB below the highest peak
+        "local_thr": 30,  // in dB below 0
+        "bins_per_octave": 120,
+        "filter_width": 0.33,  // in octaves
+        "harmonic_decay": 0.6,
+        "harmonic_tolerance": 0.66,  // in semitones
+        "final_thr": 0.0,
+        //"num_hpcp": 120, # bins-per-octave is more appropriate terminology
+        
         // general config
         "n_fft": 1200,
         "num_freq": 601,// n_fft//2 + 1

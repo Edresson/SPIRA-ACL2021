@@ -195,7 +195,7 @@ def own_collate_fn(batch):
         #print(target.shape)
         targets.append(target)
     
-    if len(features[0].shape) == 3: # if dim is 3, we have a many specs because we use a overlapping
+    if len(features[0].shape) == 3: # if dim is 3, we have many specs as we are using overlapping
         targets = torch.cat(targets, dim=0)
         features = torch.cat(features, dim=0)
     else:    

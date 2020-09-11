@@ -64,7 +64,6 @@ def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, 
         model = UTF_SPIRA_ConvLSTM_v1(c)
     elif (model_name =='utf_spira_conv_v1'):
         model = UTF_SPIRA_Conv_v1(c)
-    #elif(model_name == 'voicesplit'):
     else:
         raise Exception(" The model '"+model_name+"' is not suported")
 

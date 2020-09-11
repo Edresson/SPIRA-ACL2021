@@ -22,6 +22,8 @@ class UTF_SPIRA_Conv_v1(nn.Module):
             self.num_feature = self.config.audio['num_mels']
         elif self.config.audio['feature'] == 'mfcc':
             self.num_feature = self.config.audio['num_mfcc']
+        elif self.config.audio['feature'] == 'hpcp':
+            self.num_feature = self.config.audio['num_hpcp']
         else:
             self.num_feature = None
             raise ValueError('Feature %s Dont is supported'%self.config.audio['feature'])
@@ -249,6 +251,8 @@ class SpiraConvV2(nn.Module):
             self.num_feature = self.config.audio['num_mels']
         elif self.config.audio['feature'] == 'mfcc':
             self.num_feature = self.config.audio['num_mfcc']
+        elif self.config.audio['feature'] == 'hpcp':
+            self.num_feature = self.config.audio['bins_per_octave']
         else:
             self.num_feature = None
             raise ValueError('Feature %s Dont is supported'%self.config.audio['feature'])
