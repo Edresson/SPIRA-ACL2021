@@ -29,6 +29,7 @@
         "fc2_dim":1
     },
     "train_config": {
+        "early_stop_epochs":0, // if 0 disable else if the model does not improve after "early_stop_epochs" epochs, training is stopped
         "lr_decay": true, // activate/desactivate Noam Learning Rate Decay Scheme    
         "warmup_steps": 1000, //default 4000, Noam decay steps to increase the learning rate from 0 to "lr"
         "epochs": 1000,
@@ -38,7 +39,7 @@
         "batch_size": 5,
         "seed": 42,
         "num_workers": 14,
-        "logs_path": "../checkpoints/Paper-Experiments/exp3.6/",
+        "logs_path": "../checkpoints/Paper-Experiments/seeds/exp3.6/",
         "reinit_layers": null,
         "summary_interval": 10,
         "checkpoint_interval": 500

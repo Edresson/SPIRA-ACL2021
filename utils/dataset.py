@@ -19,6 +19,8 @@ class Dataset(Dataset):
         torch.manual_seed(c['seed'])
         torch.cuda.manual_seed(c['seed'])
         np.random.seed(c['seed'])
+        # torch.backends.cudnn.deterministic = True
+        # torch.backends.cudnn.benchmark = False
         self.c = c
         self.ap = ap
         self.train = train
