@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # based on 
 # https://github.com/rogertrullo/pytorch_convlstm/blob/master/conv_lstm.py 
 # and 
