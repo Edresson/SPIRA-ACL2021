@@ -30,7 +30,7 @@ python train.py [-c, --config_path] [--checkpoint_path]
         *'--checkpoint_path', type=str, default=None, required=True, help="path of checkpoint pt file, for continue training"
 ```
 
-### Testing
+### Testing:
 
 #### Example test.py command
 `python test.py -t ../SPIRA_Dataset_V1/metadata_test.csv -r ../SPIRA_Dataset_V1/ -c ./config.json --checkpoint_path ./checkpoint.pt`
