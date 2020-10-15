@@ -357,5 +357,4 @@ class HPCP(nn.Module):                                                          
         output = torch.from_numpy(pcp)
         output = output.unsqueeze(0)
         output = output.transpose(1, 2)
-        
         return output

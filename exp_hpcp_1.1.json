@@ -4,7 +4,7 @@
     "dataset":{
         // use the overlapping technique, in which the window was shifted "step" second each time and an instance was extracted during the total audio duration
         "split_wav_using_overlapping": true, // if true use the overlapping technique, in which the window was shifted "step" second each time and an instance was extracted during the total audio duration
-        "window_len": 4, // windows len in seconds for overlapping technique
+        "window_len": 3, // windows len in seconds for overlapping technique
         "step": 1, // step len in seconds for overlapping technique
         "padding_with_max_lenght": false,// if true, the timestep axis will be padded with the longest sequence, else, the timestep will be dynamic and the network will predict a vector of the size of the timestep on the output (if you use convolutions, it may decrease)
         "max_seq_len": null, // the data loader set automatically this value and save in train_config['logs_path']/config.json. its is max time dimension value in your train dataset. For convert this value to seconds use: value*hop_length/sample_rate
@@ -61,7 +61,7 @@
         "num_workers": 10 // used on evaluation and test
     },
     "audio": {
-        "feature": "mfcc", // spectrogram or melspectrogram or mfcc or hpcp
+        "feature": "hpcp", // spectrogram or melspectrogram or mfcc or hpcp
         // wave load paramers
         "sample_rate": 16000,
         "normalize": true, // if true, then output is divided by 1 << 31 (assumes signed 32-bit audio), and normalizes to [-1, 1]. If number, then output is divided by that number If callable, then the output is passed as a parameter to the given function, then the output is divided by the result. 

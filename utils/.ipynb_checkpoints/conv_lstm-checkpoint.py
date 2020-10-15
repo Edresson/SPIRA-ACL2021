@@ -252,4 +252,3 @@ class utfpr_convLSTM_v1(nn.Module):
         init_states = [] # list fo tuples
         for i in range(self.num_layers):
             init_states.append(self.cell_list[i].init_hidden_states(batch_size))
-        return init_states

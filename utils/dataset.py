@@ -36,7 +36,7 @@ class Dataset(Dataset):
         self.noise_root = c.dataset['noise_data_root_path']
         assert os.path.isfile(self.dataset_csv),"Test or Train CSV file don't exists! Fix it in config.json"
         assert os.path.isfile(self.noise_csv),"Noise CSV file don't exists! Fix it in config.json"
-        assert (not self.c.dataset['padding_with_max_lenght'] and self.c.dataset['split_wav']['split_wav_using_overlapping']) or  (self.c.dataset['padding_with_max_lenght'] and not self.c.dataset['split_wav']['split_wav_using_overlapping']),"You cannot use the padding_with_max_length option in conjunction with the split_wav_using_overlapping option, disable one of them !!"
+        assert (not self.c.dataset['padding_with_max_lenght'] and self.c.dataset['split_wav_using_overlapping']) or  (self.c.dataset['padding_with_max_lenght'] and not self.c.dataset['split_wav_using_overlapping']),"You cannot use the padding_with_max_length option in conjunction with the split_wav_using_overlapping option, disable one of them !!"
 
         # read csvs
         self.dataset_list = pd.read_csv(self.dataset_csv, sep=',').values
@@ -62,7 +62,7 @@ class Dataset(Dataset):
             print("The Max Time dim Lenght is: {} (+- {} seconds)".format(self.max_seq_len, ( self.max_seq_len*self.c.audio['hop_length'])/self.ap.sample_rate))
             print("The Min Time dim Lenght is: {} (+- {} seconds)".format(min_seq, (min_seq*self.c.audio['hop_length'])/self.ap.sample_rate))
 
-        elif self.c.dataset['split_wav']['split_wav_using_overlapping']:
+        elif self.c.dataset['split_wav_using_overlapping']:
             # set max len for window_len seconds multiply by sample_rate and divide by hop_lenght
             self.max_seq_len = int(((self.c.dataset['window_len']*self.ap.sample_rate)/c.audio['hop_length'])+1)
             print("The Max Time dim Lenght is: ", self.max_seq_len, "It's use overlapping technique, window:", self.c.dataset['window_len'], "step:", self.c.dataset['step'])
@@ -80,7 +80,7 @@ class Dataset(Dataset):
         #print("FILE:", os.path.join(self.dataset_root, self.dataset_list[idx][0]), wav.shape)
         class_name = self.dataset_list[idx][1]
 
-        # its assume that noise file is biggest than wav file !!
+        # its assume that noise file is bigger than wav file !!
         if self.c.data_aumentation['insert_noise']:
             # Experiments do different things within the dataloader. So depending on the experiment we will have a different random state here in get item. To reproduce the tests always using the same noise we need to set the seed again, ensuring that all experiments see the same noise in the test !!
             if self.test:
@@ -124,7 +124,7 @@ class Dataset(Dataset):
                     wav = wav + noise_wav
                 
                 #torchaudio.save('depois_patient.wav', wav, self.ap.sample_rate)
-        if self.c.dataset['split_wav']['split_wav_using_overlapping']:
+        if self.c.dataset['split_wav_using_overlapping']:
             #print("Wav len:", wav.shape[1])
             #print("for",self.ap.sample_rate*self.c.dataset['window_len'], wav.shape[1], self.ap.sample_rate*self.c.dataset['step'])
             start_slice = 0
@@ -145,6 +145,7 @@ class Dataset(Dataset):
                 #print("ERROR: Some sample in your dataset is less than %d seconds! Change the size of the overleapping window"%self.c.dataset['window_len'])
                 raise RuntimeError("ERROR: Some sample in your dataset is less than {} seconds! Change the size of the overleapping window (CONFIG.dataset['window_len'])".format(self.c.dataset['window_len']))
             else:
+                print(features[0].size())
                 feature = torch.cat(features, dim=0)
                 target = torch.cat(targets, dim=0)
             #print(feature.shape)
