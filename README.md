@@ -34,7 +34,7 @@ Alternatively, you can create an environment with the provided file.
 
 `conda env create -f spira_environment.yml`
     
-## Trainning the model:
+## Training the model:
 
 ```
 python train.py [-c, --config_path] [--checkpoint_path]
