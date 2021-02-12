@@ -114,3 +114,6 @@ venv.bak/
 .mypy_cache/
 
 .vscode
+
+# Ignore temporary package noise-reduce-tool in root folder
+noise-reduce-tool
