@@ -8,6 +8,10 @@ import random
 import torch.nn.functional as F
 from torch.nn.utils.rnn import pad_sequence
 import torchaudio
+
+from utils.noisereducetool.common import noise_suppressor
+
+
 class Dataset(Dataset):
     """
     Class for load a train and test from dataset generate by import_librispeech.py and others
@@ -67,6 +71,12 @@ class Dataset(Dataset):
                 self.max_seq_len = self.c.dataset['max_seq_len']
             else:
                 self.max_seq_len = max_seq_len
+        
+        # set denoiser
+        if c["use_denoiser"]:
+            self.denoiser = noise_suppressor.NoiseSuppressor(**c["denoiser_configs"])
+        else:
+            self.denoiser = None
 
     def get_max_seq_lenght(self):
         return self.max_seq_len
@@ -120,6 +130,11 @@ class Dataset(Dataset):
                     wav = wav + noise_wav
                 
                 #torchaudio.save('depois_patient.wav', wav, self.ap.sample_rate)
+        # denoiser
+        if self.denoiser:
+            wav = self.denoiser.noise_reduce_signal(wav.squeeze().numpy(), self.ap.sample_rate, cut_edges=False)[0]
+            wav = torch.from_numpy(wav).unsqueeze(0)
+
         if self.c.dataset['split_wav_using_overlapping']:
             #print("Wav len:", wav.shape[1])
             #print("for",self.ap.sample_rate*self.c.dataset['window_len'], wav.shape[1], self.ap.sample_rate*self.c.dataset['step'])

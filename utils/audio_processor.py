@@ -27,7 +27,7 @@ class AudioProcessor(object):
         elif self.feature == 'mfcc':
             audio_class = torchaudio.transforms.MFCC(sample_rate=self.sample_rate, n_mfcc=self.num_mfcc, log_mels=self.log_mels, melkwargs={'n_fft':self.n_fft, 'win_length':self.win_length, 'hop_length':self.hop_length, 'n_mels':self.num_mels})
 
-        feature = audio_class(y)
+        feature = audio_class(y.float())  # float() obriga o tensor ser do tipo float (o denoiser retornar double)
         return feature
 
     def get_feature_from_audio_path(self, audio_path):
