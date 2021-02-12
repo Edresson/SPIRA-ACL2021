@@ -23,7 +23,7 @@ from utils.dataset import train_dataloader, eval_dataloader
 from models.spiraconv import SpiraConvV1, SpiraConvV2
 from utils.audio_processor import AudioProcessor 
 
-def validation(criterion, ap, model, c, testloader, cuda):
+def validation(criterion, model, c, testloader, cuda):
     padding_with_max_lenght = c.dataset['padding_with_max_lenght'] or c.dataset['split_wav_using_overlapping']
     model.zero_grad()
     model.eval()
