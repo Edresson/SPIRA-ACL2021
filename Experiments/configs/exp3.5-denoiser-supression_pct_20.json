@@ -38,7 +38,7 @@
         "optimizer":"adam",
         "batch_size": 5,
         "seed": 42,
-        "num_workers": 6,
+        "num_workers": 6, // 14,
         "logs_path": "../checkpoints/Paper-Experiments/seeds/exp3.5/",
         "reinit_layers": null,
         "summary_interval": 10,
@@ -77,13 +77,13 @@
         "hop_length": 160,
         "win_length": 400
     },
-    "use_denoiser": false,
+    "use_denoiser": true,
     "denoiser_configs": {
         "noise_threshold_db": null,
         "noise_threshold_pct": 0.34,
         "bool_filter_window_size": null,
         "std_threshold": 1.5,
-        "suppresion_pct": 1.0,
+        "suppresion_pct": 0.2,
         "noise_suppress": true,
         "generate_textgrid": true
     }
