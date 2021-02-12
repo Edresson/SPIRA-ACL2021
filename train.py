@@ -23,7 +23,7 @@ from utils.dataset import train_dataloader, eval_dataloader
 from models.spiraconv import SpiraConvV1, SpiraConvV2
 from utils.audio_processor import AudioProcessor 
 
-def validation(criterion, ap, model, c, testloader, tensorboard, step,  cuda):
+def validation(criterion, ap, model, c, testloader, cuda):
     padding_with_max_lenght = c.dataset['padding_with_max_lenght'] or c.dataset['split_wav_using_overlapping']
     model.zero_grad()
     model.eval()
@@ -145,7 +145,10 @@ def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, 
                 # write loss to tensorboard
                 if step % c.train_config['summary_interval'] == 0:
                     tensorboard.log_training(loss, step)
-                    print("Write summary at step %d" % step, ' Loss: ', loss)
+                             #validation(criterion, model, c, testloader, cuda):
+                    val_loss = validation(eval_criterion, model, c, testloader, cuda=cuda)
+                    tensorboard.log_validation(val_loss, step)
+                    print("Write summary at step %d" % step, 'Loss: ', loss, 'Val loss:', val_loss)
 
                 # save checkpoint file  and evaluate and save sample to tensorboard
                 if step % c.train_config['checkpoint_interval'] == 0:
@@ -158,19 +161,22 @@ def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, 
                     }, save_path)
                     print("Saved checkpoint to: %s" % save_path)
                     # run validation and save best checkpoint
-                    val_loss = validation(eval_criterion, ap, model, c, testloader, tensorboard, step,  cuda=cuda)
+                    val_loss = validation(eval_criterion, model, c, testloader, cuda=cuda)
+                    tensorboard.log_validation(val_loss, step)
                     best_loss, _ = save_best_checkpoint(log_dir, model, optimizer, c, step, val_loss, best_loss, early_epochs if c.train_config['early_stop_epochs'] != 0 else None)
-        
+                    tensorboard.log_best_validation(best_loss, step)
         print('=================================================')
         print("Epoch %d End !"%epoch)
         print('=================================================')
         # run validation and save best checkpoint at end epoch
-        val_loss = validation(eval_criterion, ap, model, c, testloader, tensorboard, step,  cuda=cuda)
+        val_loss = validation(eval_criterion, model, c, testloader, cuda=cuda)
         best_loss, early_epochs = save_best_checkpoint(log_dir, model, optimizer, c, step, val_loss, best_loss,  early_epochs if c.train_config['early_stop_epochs'] != 0 else None)
         if c.train_config['early_stop_epochs'] != 0:
             if early_epochs is not None:
                 if early_epochs >= c.train_config['early_stop_epochs']:
                     break # stop train
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-c', '--config_path', type=str, required=True,
