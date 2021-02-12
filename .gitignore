@@ -115,5 +115,5 @@ venv.bak/
 
 .vscode
 
-# Ignore temporary package noise-reduce-tool in root folder
-noise-reduce-tool
+# Ignore temporary package noisereducetool in root folder
+noisereducetool
