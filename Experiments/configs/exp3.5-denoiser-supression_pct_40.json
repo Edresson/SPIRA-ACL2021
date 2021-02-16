@@ -38,8 +38,8 @@
         "optimizer":"adam",
         "batch_size": 5,
         "seed": 42,
-        "num_workers": 6, // 14,
-        "logs_path": "../checkpoints/Paper-Experiments/seeds/exp3.5/",
+        "num_workers": 12, // 14,
+        "logs_path": "../checkpoints/seeds/42/exp3.5-pct_40/",
         "reinit_layers": null,
         "summary_interval": 10,
         "checkpoint_interval": 500
