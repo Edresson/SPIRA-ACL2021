@@ -8,6 +8,9 @@ import random
 import torch.nn.functional as F
 from torch.nn.utils.rnn import pad_sequence
 import torchaudio
+import sox
+
+
 class Dataset(Dataset):
     """
     Class for load a train and test from dataset generate by import_librispeech.py and others
@@ -68,6 +71,15 @@ class Dataset(Dataset):
             else:
                 self.max_seq_len = max_seq_len
 
+        # set bandpass 
+        if c["audio_effects"] is not None:
+            self.sox_tfm = sox.Transformer()
+        if c["audio_effects"]["sinc"]:
+            self.sox_tfm.sinc(filter_type=c["audio_effects"]["sinc_config"]["filter_type"], 
+                              cutoff_freq=c["audio_effects"]["sinc_config"]["cutoff_freq"])
+        else:
+            self.sox_tfm = None
+
     def get_max_seq_lenght(self):
         return self.max_seq_len
 
@@ -118,7 +130,11 @@ class Dataset(Dataset):
                     reduct_factor = max_amp/float(noise_wav.max().numpy())
                     noise_wav = noise_wav*reduct_factor
                     wav = wav + noise_wav
-                
+        
+        # Apply effect
+        wav = self.sox_tfm.build_array(input_array=wav.squeeze().numpy(), sample_rate_in=self.ap.sample_rate)
+        wav = torch.from_numpy(wav).unsqueeze(0)
+
                 #torchaudio.save('depois_patient.wav', wav, self.ap.sample_rate)
         if self.c.dataset['split_wav_using_overlapping']:
             #print("Wav len:", wav.shape[1])
