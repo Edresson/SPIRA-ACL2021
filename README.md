@@ -8,7 +8,7 @@ All datasets are available under the [CC BY-SA 4.0 license](https://creativecomm
 
 [Speech COVID-19  Dataset](https://drive.google.com/file/d/19XPLqGQuiZhGCz4c0e4e5g7Z4pKXy8nB/view?usp=sharing)
 
-[Hospital noise Dataset](https://drive.google.com/file/d/1LDCaKdH-J-kP-ADNt46mnE-EY1Xmn5xM/view?usp=sharing)
+[Hospital Noise Dataset](https://drive.google.com/file/d/1LDCaKdH-J-kP-ADNt46mnE-EY1Xmn5xM/view?usp=sharing)
 
 
 ## Getting started
