@@ -3,6 +3,14 @@
 [SPIRA](https://spira.ime.usp.br/) is an project that aims to detect the presence of respiratory failure using deep learning. SPIRA stands for "
 Sistema de Detecção Precode de Insuficiência Respiratória por meio de Análise de Áudio" (in english, "Respiratory Failure Detection System Through Analysis of Audio").
 
+## Datasets Download
+All datasets are available under the [CC BY-SA 4.0 license](https://creativecommons.org/licenses/by-sa/4.0/)
+
+[Speech COVID-19  Dataset](https://drive.google.com/file/d/19XPLqGQuiZhGCz4c0e4e5g7Z4pKXy8nB/view?usp=sharing)
+
+[Hospital noise Dataset](https://drive.google.com/file/d/1LDCaKdH-J-kP-ADNt46mnE-EY1Xmn5xM/view?usp=sharing)
+
+
 ## Getting started
 
 1. Clone the repo
