@@ -6,9 +6,9 @@ Sistema de Detecção Precode de Insuficiência Respiratória por meio de Análi
 ## Datasets Download
 All datasets are available under the [CC BY-SA 4.0 license](https://creativecommons.org/licenses/by-sa/4.0/)
 
-[Speech COVID-19  Dataset](https://drive.google.com/file/d/19XPLqGQuiZhGCz4c0e4e5g7Z4pKXy8nB/view?usp=sharing)
+[Speech COVID-19  Dataset](https://drive.google.com/file/d/1Bv0d3uwBB-52MBmtN2A_qNoaBIxUkN9y/view?usp=drive_link) 
 
-[Hospital Noise Dataset](https://drive.google.com/file/d/1LDCaKdH-J-kP-ADNt46mnE-EY1Xmn5xM/view?usp=sharing)
+[Hospital Noise Dataset](https://drive.google.com/file/d/1zNwkye2FhV5LOVh3OfdqgPKzmYS7LeCM/view?usp=drive_link)
 
 
 ## Getting started
