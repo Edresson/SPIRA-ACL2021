@@ -40,7 +40,7 @@ do
   # parallel python train.py -c Experiments/configs/exp3.2.json -s $i
   # parallel python train.py -c Experiments/configs/exp3.3.json -s $i
   # parallel python train.py -c Experiments/configs/exp3.4.json -s $i
-  # parallel python train.py -c Experiments/configs/exp3.5.json -s $i
+  parallel python train.py -c exp3.5.json -s $i
   # parallel python train.py -c Experiments/configs/exp3.6.json -s $i
   # parallel python train.py -c Experiments/configs/exp3.7.json -s $i
   # parallel python train.py -c Experiments/configs/exp3.8.json -s $i

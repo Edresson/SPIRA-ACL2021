@@ -20,7 +20,8 @@ from utils.tensorboard import TensorboardWriter
 
 from utils.dataset import train_dataloader, eval_dataloader
 
-from models.spiraconv import SpiraConvV1, SpiraConvV2
+from models.spiraconv import SpiraConvV1, SpiraConvV2, UTF_SPIRA_Conv_v1
+from models.spiraconvlstm import UTF_SPIRA_ConvLSTM_v1
 from utils.audio_processor import AudioProcessor 
 
 def validation(criterion, ap, model, c, testloader, tensorboard, step,  cuda):
@@ -30,20 +31,20 @@ def validation(criterion, ap, model, c, testloader, tensorboard, step,  cuda):
     loss = 0 
     acc = 0
     with torch.no_grad():
-        for feature, target in testloader:       
+        for feature, target in testloader:    
             #try:
             if cuda:
                 feature = feature.cuda()
                 target = target.cuda()
-
+                
             output = model(feature).float()
-
+            
             # Calculate loss
             if not padding_with_max_lenght:
                 target = target[:, :output.shape[1],:target.shape[2]]
+                
             loss += criterion(output, target).item()
-
-            # calculate binnary accuracy
+            # calculate binary accuracy
             y_pred_tag = torch.round(output)
             acc += (y_pred_tag == target).float().sum().item()
 
@@ -59,7 +60,10 @@ def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, 
         model = SpiraConvV1(c)
     elif (model_name == 'spiraconv_v2'):
         model = SpiraConvV2(c)
-    #elif(model_name == 'voicesplit'):
+    elif (model_name == 'utf_convlstm_v1'):
+        model = UTF_SPIRA_ConvLSTM_v1(c)
+    elif (model_name =='utf_spira_conv_v1'):
+        model = UTF_SPIRA_Conv_v1(c)
     else:
         raise Exception(" The model '"+model_name+"' is not suported")
 
@@ -82,7 +86,7 @@ def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, 
         except:
             print(" > Partial model initialization.")
             model_dict = model.state_dict()
-            model_dict = set_init_dict(model_dict, checkpoint, c)
+            model_dict = set_init_dict(model_dict, checkpoint_path, c)
             model.load_state_dict(model_dict)
             del model_dict
         try:
@@ -123,11 +127,12 @@ def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, 
                     target = target.cuda()
 
                 output = model(feature)
-
+                
                 # Calculate loss
                 # adjust target dim
                 if not padding_with_max_lenght:
-                    target = target[:, :output.shape[1],:]
+                    target = target[:, :output.shape[0],:]
+                    print('target.size():', target.size())
                 loss = criterion(output, target)
                 optimizer.zero_grad()
                 loss.backward()
@@ -146,7 +151,10 @@ def train(args, log_dir, checkpoint_path, trainloader, testloader, tensorboard, 
                 if step % c.train_config['summary_interval'] == 0:
                     tensorboard.log_training(loss, step)
                     print("Write summary at step %d" % step, ' Loss: ', loss)
-
+                print('=================================================')    
+                print(step, 'th step loss: ', loss)
+                print('=================================================')
+                
                 # save checkpoint file  and evaluate and save sample to tensorboard
                 if step % c.train_config['checkpoint_interval'] == 0:
                     save_path = os.path.join(log_dir, 'checkpoint_%d.pt' % step)

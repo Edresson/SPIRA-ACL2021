@@ -8,6 +8,7 @@ import random
 import torch.nn.functional as F
 from torch.nn.utils.rnn import pad_sequence
 import torchaudio
+
 class Dataset(Dataset):
     """
     Class for load a train and test from dataset generate by import_librispeech.py and others
@@ -26,9 +27,11 @@ class Dataset(Dataset):
         self.test = test
         self.dataset_csv = c.dataset['train_csv'] if train else c.dataset['eval_csv']
         self.dataset_root = c.dataset['train_data_root_path'] if train else c.dataset['eval_data_root_path']
+        
         if test:
             self.dataset_csv = c.dataset['test_csv']
             self.dataset_root = c.dataset['test_data_root_path']
+            
         self.noise_csv = c.dataset['noise_csv'] 
         self.noise_root = c.dataset['noise_data_root_path']
         assert os.path.isfile(self.dataset_csv),"Test or Train CSV file don't exists! Fix it in config.json"
@@ -38,13 +41,14 @@ class Dataset(Dataset):
         # read csvs
         self.dataset_list = pd.read_csv(self.dataset_csv, sep=',').values
         self.noise_list = pd.read_csv(self.noise_csv, sep=',').values
+        
         # noise config
         self.num_noise_files = len(self.noise_list)-1
         self.control_class = c.dataset['control_class']
         self.patient_class = c.dataset['patient_class']
 
         # get max seq lenght for padding 
-        if self.c.dataset['padding_with_max_lenght'] and train and not self.c.dataset['max_seq_len'] and not self.c.dataset['split_wav_using_overlapping']:
+        if self.c.dataset['padding_with_max_lenght'] and train and not self.c.dataset['max_seq_len'] and not self.c.dataset['split_wav']['split_wav_using_overlapping']:
             self.max_seq_len = 0
             min_seq = float('inf')
             for idx in range(len(self.dataset_list)):
@@ -70,13 +74,13 @@ class Dataset(Dataset):
 
     def get_max_seq_lenght(self):
         return self.max_seq_len
-
+    
     def __getitem__(self, idx):
         wav = self.ap.load_wav(os.path.join(self.dataset_root, self.dataset_list[idx][0]))
         #print("FILE:", os.path.join(self.dataset_root, self.dataset_list[idx][0]), wav.shape)
         class_name = self.dataset_list[idx][1]
 
-        # its assume that noise file is biggest than wav file !!
+        # its assume that noise file is bigger than wav file !!
         if self.c.data_aumentation['insert_noise']:
             # Experiments do different things within the dataloader. So depending on the experiment we will have a different random state here in get item. To reproduce the tests always using the same noise we need to set the seed again, ensuring that all experiments see the same noise in the test !!
             if self.test:
@@ -141,6 +145,7 @@ class Dataset(Dataset):
                 #print("ERROR: Some sample in your dataset is less than %d seconds! Change the size of the overleapping window"%self.c.dataset['window_len'])
                 raise RuntimeError("ERROR: Some sample in your dataset is less than {} seconds! Change the size of the overleapping window (CONFIG.dataset['window_len'])".format(self.c.dataset['window_len']))
             else:
+                print(features[0].size())
                 feature = torch.cat(features, dim=0)
                 target = torch.cat(targets, dim=0)
             #print(feature.shape)
@@ -177,14 +182,13 @@ def train_dataloader(c, ap):
 
 def eval_dataloader(c, ap, max_seq_len=None):
     return DataLoader(dataset=Dataset(c, ap, train=False, max_seq_len=max_seq_len),
-                          collate_fn=own_collate_fn, batch_size=c.test_config['batch_size'], 
-                          shuffle=False, num_workers=c.test_config['num_workers'])
-
+                      collate_fn=own_collate_fn, batch_size=c.test_config['batch_size'],
+                      shuffle=False, num_workers=c.test_config['num_workers'])
 
 def test_dataloader(c, ap, max_seq_len=None):
     return DataLoader(dataset=Dataset(c, ap, train=False, test=True, max_seq_len=max_seq_len),
-                          collate_fn=teste_collate_fn, batch_size=c.test_config['batch_size'], 
-                          shuffle=False, num_workers=c.test_config['num_workers'])
+                     collate_fn=teste_collate_fn, batch_size=c.test_config['batch_size'], 
+                     shuffle=False, num_workers=c.test_config['num_workers'])
 
 def own_collate_fn(batch):
     features = []
@@ -194,7 +198,7 @@ def own_collate_fn(batch):
         #print(target.shape)
         targets.append(target)
     
-    if len(features[0].shape) == 3: # if dim is 3, we have a many specs because we use a overlapping
+    if len(features[0].shape) == 3: # if dim is 3, we have many specs as we are using overlapping
         targets = torch.cat(targets, dim=0)
         features = torch.cat(features, dim=0)
     else:    
